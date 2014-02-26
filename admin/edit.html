@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Withlove.sk</title>
+
+    <!--CSS File-->
+    <link rel="stylesheet" href="dist/css/style.css">
+
+    <!--jQeuery-->
+    <script type="text/javascript" src="dist/js/jquery-1.11.0.min.js"></script>
+    <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+    <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
+
+    <!--Custom JS files-->
+    <script type="text/javascript" src="dist/js/script.js"></script>
+
+    <!--Meta info-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#" class="list active">List 55 places</a></li>
+            <li><a href="edit.html" class="add-place active">Add a new place</a></li>
+            <li><a href="#" class="review disabled">Review suggestions</a></li>
+        </ul>
+    </nav>
+
+    <div id="main-wrapper">
+
+        <div id="search-bar">
+            <input type="text" placeholder="Search places...">
+        </div>
+
+        <div class="edit-box">
+
+            <div class="category-picker">
+
+                <div class="category incubator" data-category="incubator">
+                    <div class="category-inside">
+                        INCUBATOR
+                    </div>
+                </div>
+
+                <div class="category startup" data-category="startup">
+                    <div class="category-inside">
+                        STARTUP
+                    </div>
+                </div>
+
+                <div class="category angel-investor" data-category="angel-investor">
+                    <div class="category-inside">
+                        ANGEL INVESTOR
+                    </div>
+                </div>
+
+                <div class="category comunity" data-category="comunity">
+                    <div class="category-inside">
+                        COMUNITY
+                    </div>
+                </div>
+
+                <div class="category co-working" data-category="co-working">
+                    <div class="category-inside">
+                        CO-WORKING
+                    </div>
+                </div>
+
+                <div class="category service-provider" data-category="service-provider">
+                    <div class="category-inside">
+                        SERVICE PROVIDER
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="top-line">
+
+                <div class="name-box startup" data-category="startup">
+                    <!--<img src="dist/img/default_category.png" class="category-img">-->
+                    <input type="text" class="edit-input" value="" placeholder="Name" name="name">
+                </div>
+
+                <div class="default-inside-box">
+                    <img src="dist/img/web_icon.png" class="web-icon">
+                    <input type="text" class="edit-input" value="" placeholder="Street" name="street">
+                </div>
+
+                <div class="default-inside-box undefined">
+                    <img src="dist/img/email_icon.png" class="email-icon">
+                    <input type="text" class="edit-input" value="" placeholder="Town" name="town">
+                </div>
+
+            </div>
+
+            <div class="top-line">
+
+                <div class="default-inside-box">
+                    <img src="dist/img/web_icon.png" class="web-icon">
+                    <input type="text" class="edit-input" value="" placeholder="Website" name="web">
+                </div>
+
+                <div class="default-inside-box undefined">
+                    <img src="dist/img/email_icon.png" class="email-icon">
+                    <input type="text" class="edit-input" value="" placeholder="Email" name="email">
+                </div>
+
+                <div class="default-inside-box">
+                    <img src="dist/img/phone_icon.png" class="phone-icon">
+                    <input type="text" class="edit-input" value="" placeholder="Phone number" name="phone">
+                </div>
+
+            </div>
+
+            <div class="content-box">
+
+                <div class="text">
+                    <textarea class="textarea-input">
+
+                    </textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <input type="submit" name="cancel" value="Cancel" class="cancel"/>
+                    <input type="submit" name="show_place" value="Show place" class="f-left show-place"/>
+                    <input type="submit" name="submit_place" value="Submit place" class="submit-place"/>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>

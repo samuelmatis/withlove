@@ -1,0 +1,79 @@
+<nav>
+    <ul>
+        <li><a href="#" class="list active">List {{places.length}} places</a></li>
+        <li><a href="#/add" class="add-place active">Add a new place</a></li>
+        <li>
+            <a ng-show="(suggest_places.length > 0)" href="#/suggest" class="review">Review suggestions</a>
+            <span ng-hide="(suggest_places.length > 0)" class="disabled">Review suggestions</span>
+        </li>
+    </ul>
+</nav>
+
+
+
+<div id="main-wrapper">
+
+    <div>
+
+        <div id="search-bar">
+            <input type="text" placeholder="Search places..." ng-model="search.name">
+        </div>
+
+        <div ng-repeat="place in places | placesFuseSearch:search.name">
+            <div my-directive class="box">
+
+                <div class="top-line">
+
+                    <div class="name-box {{place.category.slug}}">
+                        <div class="inside-wrapper">
+                            {{place.name | limitTo: 25}}
+                        </div>
+                    </div>
+
+                    <div class="address-box">
+                        {{place.street | limitTo: 30}}, {{place.town | limitTo: 30}}
+                        <a href="#" class="map"> </a>
+                        <a href="#/edit/{{place.id}}" class="edit"> </a>
+                        <a href="#/" class="remove" data-ng-click="showDeleteModal(place)"> </a>
+                    </div>
+
+                </div>
+
+                <div class="top-line">
+
+                    <div class="default-inside-box">
+                        <img src="img/web_icon.png" class="web-icon">
+                        <a href="{{place.web}}" target="_blank">{{place.web | limitTo: 25}}</a>
+                    </div>
+
+                    <div class="default-inside-box undefined">
+                        <img src="img/email_icon.png" class="email-icon">
+                        <a href="mailto:{{place.email}}">{{place.email | limitTo: 25}}</a>
+                    </div>
+
+                    <div class="default-inside-box">
+                        <img src="img/phone_icon.png" class="phone-icon">
+                        {{place.phone}}
+                    </div>
+
+                </div>
+
+                <div class="content-box">
+
+                    <div class="text">
+                        {{place.description | limitTo: 280}}
+                    </div>
+
+                    <div class="item_number">
+                        {{$index+1}} / {{places.length}}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="map-small" class="map-box2"> </div>
+
+    </div>
+</div>
