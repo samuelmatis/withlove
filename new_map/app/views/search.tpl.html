@@ -1,0 +1,15 @@
+<div ng-hide="addPlaceFormVisible" id="search-panel">
+    <form>
+        <input placeholder="Search in the database..." id="search-input" autocomplete="off" ng-model="query" ng-change="search()">
+        <div class="search-reset-area">
+            <a ng-show="query" ng-click="resetSearchQuery()" href="#" class="search-reset-icon"><img alt="Reset Search" src="images/reset_search.png" /></a>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+    <a href="#" class="autocomplete-place" ng-repeat="place in places | placesFuseSearchStrict:query" ng-click="showPlace(place.latitude, place.longitude)"
+       ng-style="{'background-image':'url('+place.category.icon_normal+')','background-position':'0px 2px','background-color':place.category.color,'background-repeat':'no-repeat'}">
+        {{place.name}}
+    </a>
+    <div ng-show="query" class="search-hint">Not here? Add your place now:</div>
+    <a ng-show="query" href="#" class="add-place-button" ng-click="showAddPlaceForm()">ADD YOUR PLACE</a>
+</div>
