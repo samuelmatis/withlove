@@ -11,5 +11,5 @@ angular.module('withloveApp')
 
         $scope.filterCategory = function(name, event) {
             $rootScope.$emit('filterCategory', name, event);
-        }
+        };
     });

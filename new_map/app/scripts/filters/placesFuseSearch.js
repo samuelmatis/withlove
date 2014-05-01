@@ -8,7 +8,7 @@ angular.module('withloveApp')
             } else {
                 return places;
             }
-        }
+        };
     })
     .filter('placesFuseSearchStrict', function($rootScope) {
         return function(places, query) {
@@ -17,5 +17,5 @@ angular.module('withloveApp')
             } else {
                 return [];
             }
-        }
+        };
     });

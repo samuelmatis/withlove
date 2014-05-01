@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('withloveApp')
-    .factory('placesService', function($http, base_url) {
+    .factory('placesService', function($http, baseUrl) {
         var placesFactory = {};
 
-        placesFactory.getPlaces = function() {
-            return $http.get(base_url + 'place');
+        placesFactory.getPlaces = function(){
+            return $http.get(baseUrl + 'place');
         };
 
-        placesFactory.getPlace = function(id) {
-            return $http.get(base_url + 'place/' + id);
+        placesFactory.getPlace = function(id){
+            return $http.get(baseUrl + 'place/' + id);
         };
 
-        placesFactory.insertPlace = function(place) {
-            return $http.post(base_url + 'place', place);
+        placesFactory.insertPlace = function(place){
+            return $http.post(baseUrl + 'place', place);
         };
 
         return placesFactory;
