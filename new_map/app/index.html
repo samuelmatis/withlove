@@ -37,7 +37,10 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container"></div>
+    <div app-about-overlay></div>
+    <div app-menu></div>
+    <div app-search></div>
+    <div app-map></div>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -60,9 +63,15 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/map.js"></script>
     <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/directives/map.js"></script>
     <script src="scripts/directives/menu.js"></script>
+    <script src="scripts/directives/search.js"></script>
+    <script src="scripts/directives/aboutOverlay.js"></script>
     <script src="scripts/services/categories.js"></script>
+    <script src="scripts/services/places.js"></script>
+    <script src="scripts/filters/placesFuseSearch.js"></script>
     <!-- endbuild -->
 </body>
 </html>
