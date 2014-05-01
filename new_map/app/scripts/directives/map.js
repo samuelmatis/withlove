@@ -5,8 +5,6 @@ angular.module('withloveApp')
         return {
             template: '<div id="map"></div>',
             replace: true,
-            controller: 'MapCtrl',
-            link: function(scope, element, attrs) {
-            }
+            controller: 'MapCtrl'
         };
     });
