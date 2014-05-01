@@ -647,8 +647,6 @@ h2 {
     overflow-x: auto;
     overflow-y: scroll;
     z-index: 1040;
-
-    display: none;
 }
 
 .about-text {
@@ -665,8 +663,6 @@ h2 {
     bottom: auto;
     z-index: 1050;
     font-size: 24px;
-
-    display: none;
 }
 
 .overlay-backdrop {
@@ -680,7 +676,6 @@ h2 {
     opacity: 1;
     transition: opacity 0.15s linear 0s;
     opacity: 0.5;
-    display: none;
 }
 
 #about-close-button {
