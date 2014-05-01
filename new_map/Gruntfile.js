@@ -95,7 +95,7 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc',
         reporter: require('jshint-stylish'),
-        ignores: ['Gruntfile.js']
+        ignores: ['Gruntfile.js', '<%= yeoman.app %>/scripts/vendor/**/*.js']
       },
       all: [
         'Gruntfile.js',
