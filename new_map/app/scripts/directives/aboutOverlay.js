@@ -5,17 +5,17 @@ angular.module('withloveApp')
         return {
             templateUrl: 'views/about_overlay.tpl.html',
             replace: true,
-            link: function(scope, element, attrs) {
-                var close_button = element.find('#about-close-button');
+            link: function(scope, element) {
+                var closeButton = element.find('#about-close-button');
 
-                if($cookies.intro_about !== undefined) {
+                if($cookies.withloveIntro !== undefined) {
                     element.hide();
                 } else {
                     element.show();
-                    $cookieStore.put('intro_about', 1);
+                    $cookieStore.put('withloveIntro', 1);
                 }
 
-                close_button.bind('click', function() {
+                closeButton.bind('click', function() {
                     element.hide();
                 });
             }
