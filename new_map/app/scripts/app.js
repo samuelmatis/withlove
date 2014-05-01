@@ -9,4 +9,8 @@ angular.module('withloveApp', [])
         'day_map': 'chiwo.geid1fd8',
         'evening_map': 'chiwo.h78k8i58',
         'night_map': 'chiwo.geg7cd6d'
+    })
+
+    .run(function($http, api_key) {
+          $http.defaults.headers.common.Authorization = api_key;
     });
