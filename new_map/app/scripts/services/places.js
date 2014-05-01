@@ -8,8 +8,12 @@ angular.module('withloveApp')
             return $http.get(baseUrl + 'place');
         };
 
-        placesFactory.getPlace = function(id){
+        placesFactory.getPlace = function(id) {
             return $http.get(baseUrl + 'place/' + id);
+        };
+
+        palcesFactory.editPlace = function(place) {
+            return $http.put(baseUrl + 'place/' + place.id, place);
         };
 
         placesFactory.insertPlace = function(place){
