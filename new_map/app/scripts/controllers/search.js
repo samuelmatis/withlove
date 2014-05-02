@@ -27,6 +27,14 @@ angular.module('withloveApp')
             $scope.search();
         };
 
+        function clearFormAfterSave() {
+            $scope.clearForm();
+            $scope.addPlaceFormVisible = false;
+            $scope.query = '';
+            $scope.search();
+            $scope.addPlaceFormBlock();
+        }
+
         $scope.saveNewPlace = function(){
 
             if($scope.form.category !== '') {
@@ -35,9 +43,7 @@ angular.module('withloveApp')
                     $scope.form.web = 'http://' + $scope.form.web;
                 }
 
-                angular.element('.addplaceform-addbutton').attr('disabled', 'disabled');
-                angular.element('.addplaceform-addbutton img').attr('display', 'block');
-                angular.element('.addplaceform-addbutton span').attr('display', 'none');
+                $scope.addPlaceFormDisable();
 
                 var addPlacePromise = placesService.insertPlace($scope.form);
                 addPlacePromise.then(function() {
@@ -45,7 +51,7 @@ angular.module('withloveApp')
                         templateUrl: 'views/successModalMessage.tpl.html',
                         controller: 'ModalInstanceCtrl',
                         resolve: {
-                            data: function(){
+                            data: function() {
                                 return {
                                     title: 'ADD NEW PLACE',
                                     text: 'Place was successfully added and now is awaiting approval from the administrators.'
@@ -54,16 +60,7 @@ angular.module('withloveApp')
 
                         }
                     });
-
-                    $scope.clearForm();
-                    $scope.addPlaceFormVisible = false;
-                    $scope.query = '';
-                    $scope.search();
-
-                    angular.element('.addplaceform-addbutton').removeAttr('disabled');
-                    angular.element('.addplaceform-addbutton img').attr('display', 'none');
-                    angular.element('.addplaceform-addbutton span').attr('display', 'inline-block');
-
+                    clearFormAfterSave();
                 }, function() {
                     $modal.open({
                         templateUrl: 'views/errorModalMessage.tpl.html',
@@ -77,10 +74,7 @@ angular.module('withloveApp')
                             }
                         }
                     });
-
-                    angular.element('.addplaceform-addbutton').removeAttr('disabled');
-                    angular.element('.addplaceform-addbutton img').attr('display', 'none');
-                    angular.element('.addplaceform-addbutton span').attr('display', 'inline-block');
+                    $scope.addPlaceFormBlock();
                 });
             } else {
                 console.log($scope.form);
@@ -89,10 +83,7 @@ angular.module('withloveApp')
 
         $scope.saveEditData = function(){
 
-            angular.element('.addplaceform-editbutton').attr('disabled', 'disabled');
-            angular.element('.addplaceform-editbutton img').attr('display', 'block');
-            angular.element('.addplaceform-editbutton span').attr('display', 'none');
-
+            $scope.addPlaceFormDisable();
 
             if($scope.form.web.indexOf('http') < 0) {
                 $scope.form.web = 'http://' + $scope.form.web;
@@ -114,16 +105,7 @@ angular.module('withloveApp')
 
                         }
                     });
-
-                    $scope.clearForm();
-                    $scope.addPlaceFormVisible = false;
-                    $scope.query = '';
-                    $scope.search();
-
-                    angular.element('.addplaceform-editbutton').removeAttr('disabled');
-                    angular.element('.addplaceform-editbutton img').attr('display', 'none');
-                    angular.element('.addplaceform-editbutton span').attr('display', 'inline-block');
-
+                    clearFormAfterSave();
                 }, function() {
                     $modal.open({
                         templateUrl: 'views/errorModalMessage.tpl.html',
@@ -139,9 +121,7 @@ angular.module('withloveApp')
                         }
                     });
 
-                    angular.element('.addplaceform-editbutton').removeAttr('disabled');
-                    angular.element('.addplaceform-editbutton img').attr('display', 'none');
-                    angular.element('.addplaceform-editbutton span').attr('display', 'inline-block');
+                    $scope.addPlaceFormBlock();
                 });
         };
 
@@ -155,7 +135,6 @@ angular.module('withloveApp')
             $scope.form.email = current.email;
             $scope.form.phone = current.phone;
             $scope.form.description = current.description;
-
             $scope.form.category = current.category.id;
 
             $scope.editAction = true;

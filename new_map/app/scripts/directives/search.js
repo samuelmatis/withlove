@@ -6,7 +6,7 @@ angular.module('withloveApp')
             templateUrl: 'views/search.tpl.html',
             replace: true,
             controller: 'SearchCtrl',
-            link: function() {
+            link: function(scope, element, attrs) {
 
                 angular.element('.selected-category').click(function() {
                     var category = angular.element(this).attr('data-category');
@@ -59,6 +59,18 @@ angular.module('withloveApp')
                     }
                     angular.element('.characters-remaining').text(numOfCharacters + '/' + maxLength);
                 });
+
+                scope.addPlaceFormDisable = function() {
+                    angular.element('.addplaceform-addbutton').attr('disabled', 'disabled');
+                    angular.element('.addplaceform-addbutton img').attr('display', 'block');
+                    angular.element('.addplaceform-addbutton span').attr('display', 'none');
+                }
+
+                scope.addPlaceFormBlock = function() {
+                    angular.element('.addplaceform-addbutton').removeAttr('disabled');
+                    angular.element('.addplaceform-addbutton img').attr('display', 'none');
+                    angular.element('.addplaceform-addbutton span').attr('display', 'inline-block');
+                }
             }
         };
     });
