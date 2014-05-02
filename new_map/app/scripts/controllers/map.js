@@ -131,29 +131,4 @@ angular.module('withloveApp')
             map.setView(new L.LatLng(latitude, longitude), 17);
         };
 
-        $rootScope.$on('filterCategory', function(ev, name, event) {
-            // Toggle navigation filter button state
-            var myElement = angular.element(event.target);
-
-            if(myElement.hasClass('active')) {
-                // Setting a filter
-                $scope.filters.push(name);
-                myElement.removeClass('active');
-                myElement.addClass('inactive');
-            } else {
-                // Unsetting the filter
-                var index = $scope.filters.indexOf(name);
-                if (index > -1) {
-                    $scope.filters.splice(index, 1);
-                }
-                myElement.removeClass('inactive');
-                myElement.addClass('active');
-            }
-
-            // Clear all map markers and repopulate the map with the new filter
-            clearMap();
-            populateMap();
-
-        });
-
     });
