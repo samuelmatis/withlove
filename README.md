@@ -8,6 +8,7 @@ Withlove.sk was started by the [Phirational](https://github.com/Phirational) tea
 - Lukáš Kubovič (@kubovic33)
 - Michal Trnka (@blackthorn42)
 - Michal Vavák (@vavo)
+- Samuel Matis (@samuelmatis)
 
 Withlove.sk is provided under the MIT License.
 

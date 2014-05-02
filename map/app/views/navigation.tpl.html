@@ -1,0 +1,16 @@
+<div id="navigation">
+    <a href="http://withlove.sk/" class="logo-link">
+        <img src="images/logo_with_love.png" class="logo-img" />
+        <div class="logo-panel">
+            <span class="logo-title">Withlove.sk</span>
+            <span class="logo-subtitle">From Slovakia with Love</span>
+        </div>
+    </a>
+    <div class="clearfix"></div>
+    <ul>
+        <li data-ng-repeat="category in categories">
+            <a title="{{category.name}}" href="#" data-category="{{category.name}}" class="category-marker active" ng-style="{'background-image':'url('+category.icon_normal+')','color':category.color}"  ng-click="filterCategory(category.name, $event)">{{category.name}}</a>
+        </li>
+    </ul>
+    <a href="https://github.com/Phirational/withlove" class="github-link" target="_blank"><img src="images/octocat.png" alt="Github withlove repository" /><span class="github-title">Github Repo</span></a>
+</div>
