@@ -1,7 +1,0 @@
-{
-  "name": "wthlove",
-  "root": "./",
-  "clean_urls": true,
-  "cache_control": {},
-  "routes": {}
-}
