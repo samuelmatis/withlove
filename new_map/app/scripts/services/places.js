@@ -12,7 +12,7 @@ angular.module('withloveApp')
             return $http.get(baseUrl + 'place/' + id);
         };
 
-        palcesFactory.editPlace = function(place) {
+        placesFactory.editPlace = function(place) {
             return $http.put(baseUrl + 'place/' + place.id, place);
         };
 
