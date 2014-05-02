@@ -10,17 +10,13 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-
-  // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
   // Define the configuration for all the tasks
   grunt.initConfig({
 
-    // Project settings
     yeoman: {
-      // configurable paths
-      app: require('./bower.json').appPath || 'app',
+      app: 'app',
       dist: 'dist'
     },
 
@@ -60,8 +56,7 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
       livereload: {
@@ -180,6 +175,12 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/images'
+        }, {
+          expand : true,
+          flatten : true,
+          cwd : '<%= yeoman.app %>/styles',
+          src : '**/*.{png,jpg,jpeg,gif}',
+          dest : '<%= yeoman.dist %>/styles/images'
         }]
       }
     },
@@ -207,6 +208,16 @@ module.exports = function (grunt) {
           src: ['*.html', 'views/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
+      }
+    },
+
+    imageEmbed: {
+      dist: {
+        src: [ "<%= yeoman.dist %>/styles/main.css" ],
+        dest: "<%= yeoman.dist %>/styles/main.css",
+        options: {
+          deleteAfterEncoding : true
+        }
       }
     },
 
@@ -351,6 +362,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
+    'imageEmbed',
     'rev',
     'usemin',
     'htmlmin'
