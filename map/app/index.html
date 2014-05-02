@@ -1,355 +1,44 @@
-<html ng-app="withloveApp">
-<!--
-            _
-           / )
-        ,-(,' ,---.
-       (,-.\,' `  _)-._
-          ,' `(_)_)  ,-`--.
-         /          (      )
-        /            `-.,-'|
-       /                |  /               _ _
-       |               ,^ /   ____________/ / \_.)_
-      /                   |   `.     ,'   @_@_/ ,'|
-      |                   /     `-.-'        , / /|
-     /                   /         `-.____,-'  | ||
-     |                   |                  \  \ ||
-     |                   |                   |  | \|
-    /                    \                  /   \     ,,'
-  ,.|                    |                  |    \   //
-(`\ |                    |                 /      |  ||
-(\  |   --.      /  \_   |                 |    ,-\ //
- (__(   ___)-.   | '' )  /)                |   _\  \||
-     `---...\\\--(__))/-'-'               (_`-(_____)/
-
-    Awwww, isn't that cute . . . BUT IT'S WRONG!!!!!
--->
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta property="og:image" content="http://withlove.sk/withlove-preview.png”/>
-    <meta property="og:title" content="Withlove.sk - Mapping the Slovak Startup Community"/>
-    <meta property="og:description” content="WithLove.sk is a map of Slovak start-up ecosystem. It consists of start-ups, investors, community hubs and co-working spaces. "/>
-    <meta property="og:url" content="http://withlove.sk/”/>
-    <meta property="og:site_name" content=“WithLove.sk”/>
-    <meta property="og:type" content=“website”/>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Withlove.sk - Mapping the Slovak Startup Community</title>
+    <meta property="og:image" content="http://withlove.sk/withlove-preview.png">
+    <meta property="og:title" content="Withlove.sk - Mapping the Slovak Startup Community"/>
+    <meta property="og:description" content="WithLove.sk is a map of Slovak start-up ecosystem. It consists of start-ups, investors, community hubs and co-working spaces.">
+    <meta property="og:url" content="http://withlove.sk/">
+    <meta property="og:site_name" content="WithLove.sk">
+    <meta property="og:type" content="website"/>
+    <meta name="viewport" content="width=device-width">
 
-    <!-- font -->
+    <!-- external styles -->
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.css">
 
-    <!-- mapbox markers -->
-    <link rel="stylesheet" href="css/MarkerCluster.css" />
-    <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="css/MarkerCluster.Default.ie.css"/><![endif]-->
-
-
-    <!-- styles -->
-    <link href='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.css' rel='stylesheet' />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="css/selectbox.css" />
+    <!-- build:css styles/styles.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/selectbox.css">
+    <!-- endbuild -->
 </head>
+<body ng-app="withloveApp" class="night-template">
+    <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-<body data-ng-controller="PlacesController" class="night-template">
+    <div app-about-overlay=""></div>
+    <div app-menu=""></div>
+    <div app-search=""></div>
+    <div app-map=""></div>
 
-    <script type="text/ng-template" id="successModalMessage">
-        <div class="success-modal">
-            <div class="modal-header">
-                {{modal_data.title}}
-            </div>
-            <div class="modal-body">
-                {{modal_data.text}}
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="ok()">OK</button>
-            </div>
-        </div>
-    </script>
-
-    <script type="text/ng-template" id="errorModalMessage">
-        <div class="error-modal">
-            <div class="modal-header">
-                {{modal_data.title}}
-            </div>
-            <div class="modal-body">
-                {{modal_data.text}}
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="ok()">OK</button>
-            </div>
-        </div>
-    </script>
-
-    <!-- CATEGORIES PANEL -->
-    <div id="navigation">
-        <a href="http://withlove.sk/" class="logo-link">
-            <img src="img/logo_with_love.png" class="logo-img" />
-            <div class="logo-panel">
-                <span class="logo-title">Withlove.sk</span>
-                <span class="logo-subtitle">From Slovakia with Love</span>
-            </div>
-        </a>
-        <div class="clearfix"></div>
-        <ul>
-            <li data-ng-repeat="category in categories">
-                <a title="{{category.name}}" href="#" data-category="{{category.name}}" class="category-marker active" ng-style="{'background-image':'url('+category.icon_normal+')','color':category.color}"  ng-click="filterCategory(category.name, $event)">{{category.name}}</a>
-            </li>
-        </ul>
-        <a href="https://github.com/Phirational/withlove" class="github-link" target="_blank"><img src="img/octocat.png" alt="Github withlove repository" /><span class="github-title">Github Repo</span></a>
-    </div>
-
-    <!-- SEARCH PANEL -->
-    <div ng-hide="addPlaceFormVisible" id="search-panel">
-        <form>
-            <input placeholder="Search in the database..." id="search-input" autocomplete="off" ng-model="query" ng-change="search()">
-            <div class="search-reset-area">
-                <a ng-show="query" ng-click="resetSearchQuery()" href="#" class="search-reset-icon"><img alt="Reset Search" src="img/reset_search.png" /></a>
-            </div>
-            <div class="clearfix"></div>
-        </form>
-        <a href="#" class="autocomplete-place" ng-repeat="place in places | placesFuseSearchStrict:query" ng-click="showPlace(place.latitude, place.longitude)"
-           ng-style="{'background-image':'url('+place.category.icon_normal+')','background-position':'0px 2px','background-color':place.category.color,'background-repeat':'no-repeat'}">
-            {{place.name}}
-        </a>
-        <div ng-show="query" class="search-hint">Not here? Add your place now:</div>
-        <a ng-show="query" href="#" class="add-place-button" ng-click="showAddPlaceForm()">ADD YOUR PLACE</a>
-    </div>
-
-    <!-- ADD A PLACE FORM -->
-    <div ng-show="addPlaceFormVisible" id="addplaceform-wrapper">
-        <form name="addPlaceForm">
-            <div>
-                <div class="addplaceform-datarow">
-                    <div class="selected-category {{selected_category.slug}}" data-category="startup"
-                         ng-style="{'background-image':'url('+selected_category.icon_normal+')','background-position':'0px 2px','background-color':selected_category.color,'background-repeat':'no-repeat','color':'#FFFFFF'}">
-                        <div class="category-inside">
-                            {{selected_category.name}}
-                        </div>
-                        <span class="addplaceform-select-arrow"><img src="img/select-arrow.png"></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-
-                <div class="category-picker">
-                    <div data-ng-repeat="category in categories"
-                         class="category {{category.slug}}"
-                         data-category="{{category.slug}}"
-                         data-category-id="{{category.id}}"
-                         ng-style="{'background-image': 'url('+category.icon_normal+')','background-position':'0px 2px','background-color':category.color,'background-repeat':'no-repeat'}"
-                         select-stairs>
-                        <div class="category-inside">
-                            {{category.name}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="addplaceform-datarow">
-                    <span class="addplaceform-icon-wrapper"><img src="img/blank.png" alt="" /></span>
-                    <input type="text" required ng-trim="true" placeholder="Place name..." autocomplete="off" name="companyName" class="addplaceform-input" ng-model="form.name" ng-pattern="/^([a-zA-Z0-9-_:?!.\/ ]{1,25})$/">
-                    <span ng-show="addPlaceForm.companyName.$valid" class="addplaceform-validation-wrapper"><img src="img/check-success.png" /></span>
-                    <span ng-hide="addPlaceForm.companyName.$valid" class="addplaceform-validation-wrapper"><img src="img/check-failed.png" /></span>
-                </div>
-                <div class="addplaceform-datarow">
-                    <span class="addplaceform-icon-wrapper"><img src="img/address.png" alt="Address" /></span>
-                    <input type="text" ng-pattern="/^\s*\w*\s*$/" required ng-trim="true" placeholder="Town..." autocomplete="off" name="companyTown" class="addplaceform-input" ng-model="form.town">
-                    <span ng-show="addPlaceForm.companyTown.$valid" class="addplaceform-validation-wrapper"><img src="img/check-success.png" /></span>
-                    <span ng-hide="addPlaceForm.companyTown.$valid" class="addplaceform-validation-wrapper"><img src="img/check-failed.png" /></span>
-                </div>
-                <div class="addplaceform-datarow">
-                    <span class="addplaceform-icon-wrapper"><img src="img/blank.png" alt="" /></span>
-                    <input type="text" required ng-trim="true" placeholder="Street..." autocomplete="off" name="companyStreet" class="addplaceform-input" ng-model="form.street">
-                    <span ng-show="addPlaceForm.companyStreet.$valid" class="addplaceform-validation-wrapper"><img src="img/check-success.png" /></span>
-                    <span ng-hide="addPlaceForm.companyStreet.$valid" class="addplaceform-validation-wrapper"><img src="img/check-failed.png" /></span>
-                </div>
-                <div class="addplaceform-datarow">
-                    <span class="addplaceform-icon-wrapper"><img src="img/website.png" alt="Website" /></span>
-                    <input type="text" ng-trim="true" placeholder="Website..." autocomplete="off" name="companyWebsite" class="addplaceform-input" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" ng-model="form.web">
-                    <span ng-show="addPlaceForm.companyWebsite.$valid" class="addplaceform-validation-wrapper"><img src="img/check-success.png" /></span>
-                    <span ng-hide="addPlaceForm.companyWebsite.$valid" class="addplaceform-validation-wrapper"><img src="img/check-failed.png" /></span>
-                </div>
-                <div class="addplaceform-datarow">
-                    <span class="addplaceform-icon-wrapper"><img src="img/email.png" alt="E-Mail" /></span>
-                    <input type="text" ng-trim="true" placeholder="E-Mail..." autocomplete="off" name="companyEmail" class="addplaceform-input" ng-model="form.email" ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
-                    <span ng-show="addPlaceForm.companyEmail.$valid" class="addplaceform-validation-wrapper"><img src="img/check-success.png" /></span>
-                    <span ng-hide="addPlaceForm.companyEmail.$valid" class="addplaceform-validation-wrapper"><img src="img/check-failed.png" /></span>
-                </div>
-                <div class="addplaceform-datarow">
-                    <span class="addplaceform-icon-wrapper"><img src="img/phone.png" alt="Phone" /></span>
-                    <input type="text" ng-trim="true" placeholder="Phone..." autocomplete="off" name="companyPhone" class="addplaceform-input" ng-model="form.phone" ng-pattern="/^(\+?[0-9\-\/\(\) ]{3,24})$/">
-                    <span ng-show="addPlaceForm.companyPhone.$valid" class="addplaceform-validation-wrapper"><img src="img/check-success.png" /></span>
-                    <span ng-hide="addPlaceForm.companyPhone.$valid" class="addplaceform-validation-wrapper"><img src="img/check-failed.png" /></span>
-                </div>
-                <div class="addplaceform-datarow textarea-datarow">
-                    <span class="addplaceform-icon-wrapper"><img alt="" src="img/blank.png"></span>
-                    <textarea ng-trim="true" placeholder="Description..." ng-model="form.description" name="companyDescription" class="addplaceform-textarea" data-maxlength="160"></textarea>
-                    <span class="addplaceform-description-characters"><span class="characters-remaining">0/160</span></span>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <button class="addplaceform-addbutton" ng-show="!editAction" ng-click="saveNewPlace()"><img src="img/button-loader.gif" style="display: none;"><span>ADD THIS PLACE</span></button>
-            <button class="addplaceform-editbutton" ng-show="editAction" ng-click="saveEditData()"><img src="img/button-loader.gif" style="display: none;"><span>EDIT THIS PLACE</span></button>
-            <a href="#" class="addplaceform-cancelbutton" ng-click="cancelAddPlaceForm()">or CANCEL, I changed my mind.</a>
-        </form>
-    </div>
-
-    <!-- MAPBOX MAP -->
-    <div id="map"></div>
-
-    <!-- ABOUT PROJECT - OVERLAY -->
-    <div class="about-overlay">
-        <div class="about-text">
-            <h1>Welcome to WithLove.sk</h1>
-            <p>
-                WithLove.sk is a map of Slovak start-up ecosystem. It consists of start-ups, investors, community hubs and co-working spaces.
-            </p>
-            <p>
-                Our content is based on crowd-sourcing. Companies and individuals come to WithLove to create and update their profile. In addition, we developed processes to insure the data is up to date and accurate.
-            </p>
-            <p>
-                WithLove.sk was created by Phirational in Trnava. System powering WithLove.sk was made freely available as an open-source on GitHub.
-            </p>
-            <a href="#" id="about-close-button"><img src="img/close-icon-button.png"></a>
-        </div>
-    </div>
-    <div class="overlay-backdrop"></div>
-
-    <!-- mapbox -->
-    <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.js'></script>
-
-    <script src="lib/leaflet.markercluster-src.js"></script>
-
-    <!-- jquery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="lib/jquery.autogrow-textarea.js"></script>
-    <script src="lib/jquery.cookie.js"></script>
-
-    <!-- fuse search -->
-    <script src="lib/fuse.js"></script>
-
-    <!-- angular -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
-    <script src="lib/angular-route.js"></script>
-    <script src="lib/angular-resource.js"></script>
-
-    <!-- angular app -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/placesService.js"></script>
-    <script src="js/categoriesService.js"></script>
-
-    <!-- angular bootstrap -->
-    <script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
-    <script src="js/select-stairs.js"></script>
-
-    <script>
-        $(function() {
-
-            var intro_cookie = $.cookie('intro_about');
-
-            if(typeof intro_cookie == 'undefined')
-            {
-                $('.overlay-backdrop').show();
-                $('.about-overlay').show();
-                $('.about-text').show();
-
-                $.cookie('intro_about', '1', { expires: 3650 });
-            }
-
-            $('#about-close-button').bind('click', function(){
-                $('.overlay-backdrop').hide();
-                $('.about-overlay').hide();
-                $('.about-text').hide();
-            });
-
-            $('.about-text').bind('click', function(e){
-                e.stopPropagation();
-            });
-
-            $('.about-overlay').bind('click', function(){
-                $('.overlay-backdrop').hide();
-                $('.about-overlay').hide();
-                $('.about-text').hide();
-            });
-
-            $(document).keypress(function(e) {
-                if (e.keyCode == 27) {
-                    $('.overlay-backdrop').hide();
-                    $('.about-overlay').hide();
-                    $('.about-text').hide();
-                }
-            });
-
-            $('#navigation').mouseenter(function() {
-                $('#navigation').stop().animate({
-                    width: "280px"
-                }, 200 );
-            }).mouseleave(function() {
-                $('#navigation').stop().animate({
-                    width: "116px"
-                }, 200 );
-            });
-
-            $('.addplaceform-textarea').autogrow();
-
-            $('.selected-category').click(function(e) {
-
-                var category = $(this).attr('data-category');
-
-                var selected = $('.category.'+category);
-
-                $('.category-picker').prepend(selected);
-
-                fadeLI($('.category'), 0, $('.category').length);
-
-                $('.category').bind('click', function() {
-
-                    var element = $('.selected-category');
-                    var text = $(this).text();
-                    var element_style = $(this).attr("style");
-
-                    element.attr('class', '')
-                            .addClass('selected-category')
-                            .addClass($(this).attr('data-category'))
-                            .attr('data-category', $(this).attr('data-category'))
-                            .attr('style', element_style);
-                    $('.category-inside', element).text(text);
-
-                    fadeLO($('.category'), 0, $('.category').length);
-                });
-
-            });
-
-            function fadeLI(elem, i, length) {
-                if( i < length ) {
-                    elem.eq(i).fadeIn(100, function() { fadeLI(elem, i+1, length); });
-                }
-                else return false;
-
-            }
-
-            function fadeLO(elem, i, length) {
-                if( i < length ) {
-                    elem.eq(length-1).fadeOut(100, function() { fadeLO(elem, 0, length-1); });
-                }
-                else return false;
-
-            }
-
-            $(".addplaceform-textarea").keyup(function(){
-                var maxLength = $(this).attr('data-maxlength');
-
-                var num_of_characters = $(this).val().length;
-
-                if ($(this).val().length > maxLength) {
-                    $(this).val($(this).val().substring(0, maxLength));
-                    num_of_characters = $(this).val().length;
-                }
-                $('.characters-remaining').text(num_of_characters + '/' + maxLength);
-            });
-
-        });
-    </script>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -357,12 +46,35 @@
         _gaq.push(['_trackPageview']);
         (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-
             ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
 
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.js'></script>
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="scripts/vendor/ui-bootstrap-custom-tpls-0.10.0.js"></script>
+    <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="bower_components/fuse.js/src/fuse.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/map.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/controllers/search.js"></script>
+    <script src="scripts/controllers/modalInstance.js"></script>
+    <script src="scripts/directives/map.js"></script>
+    <script src="scripts/directives/menu.js"></script>
+    <script src="scripts/directives/search.js"></script>
+    <script src="scripts/directives/aboutOverlay.js"></script>
+    <script src="scripts/directives/selectStairs.js"></script>
+    <script src="scripts/services/categories.js"></script>
+    <script src="scripts/services/places.js"></script>
+    <script src="scripts/filters/placesFuseSearch.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
