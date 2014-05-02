@@ -213,8 +213,8 @@ module.exports = function (grunt) {
 
     imageEmbed: {
       dist: {
-        src: [ "<%= yeoman.dist %>/styles/main.css" ],
-        dest: "<%= yeoman.dist %>/styles/main.css",
+        src: [ "<%= yeoman.dist %>/styles/styles.css" ],
+        dest: "<%= yeoman.dist %>/styles/styles.css",
         options: {
           deleteAfterEncoding : true
         }
