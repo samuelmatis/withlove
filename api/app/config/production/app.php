@@ -13,7 +13,7 @@ return array(
     |
     */
 
-    'debug' => true,
+    'debug' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => 'http://withlove.sk', // TODO: change this to your production domain
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
     |
     */
 
-    'key' => '1234567890',      // TODO: Set your encryption key here.
+    'key' => '1234567890', // TODO: Run in CLI 'php artisan key:generate'
 
     /*
     |--------------------------------------------------------------------------

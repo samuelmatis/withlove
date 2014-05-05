@@ -28,7 +28,8 @@ $app->redirectIfTrailingSlash();
 
 $env = $app->detectEnvironment(array(
 
-    'local' => array('your-machine-name'),
+    'development' => array('127.0.0.1', 'localhost'),
+    'production' => array('withlove.sk')
 
 ));
 
