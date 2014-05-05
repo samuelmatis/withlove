@@ -1,7 +1,5 @@
 <?php
 
-namespace Phirational\Withlove;
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -16,8 +14,8 @@ class CreatePlaceParentTable extends Migration {
 	{
         Schema::create('place_parent', function (Blueprint $table) {
 
-            $table->int('parent_id');
-            $table->int('children_id');
+            $table->integer('parent_id');
+            $table->integer('children_id');
             $table->enum('type', array('PLACE', 'PERSON'));
 
             $table->timestamps();
@@ -31,7 +29,7 @@ class CreatePlaceParentTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('place_parent');
 	}
 
 }
