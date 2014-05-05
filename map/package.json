@@ -1,6 +1,30 @@
 {
     "name": "withlove",
-    "version": "0.0.0",
+    "author": "Phirational <hello@phirational.com>",
+    "description": "Mapping the Slovak Startup Community",
+    "contributors": [
+        {
+            "name": "Peter Kocian",
+            "email": "kocian@phirational.com"
+        },
+        {
+            "name": "Lukáš Kubovič",
+            "email": "kubovic@phirational.com"
+        },
+        {
+            "name": "Samuel Matis",
+            "email": ""
+        },
+        {
+            "name": "Michal Trnka",
+            "email": "michal@phirational.com"
+        },
+        {
+            "name": "Michal Vavák",
+            "email": "vavak@phirational.com"
+        },
+    ],
+    "version": "0.1.3",
     "dependencies": {},
     "devDependencies": {
         "grunt": "~0.4.1",
