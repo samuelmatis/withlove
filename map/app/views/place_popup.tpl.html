@@ -1,0 +1,25 @@
+<div>
+    <div class="placedetail-header" style="background-color: {{item.category.color}};">
+        <span class="placedetail-icon"><img ng-src="{{item.category.icon_normal}}" alt="{{item.category.name}}"/></span>
+        <span class="placedetail-title">{{item.name}}</span>
+    </div>
+    <div class="placedetail-body">
+        <div class="placedetail-category-wrapper">
+            <div class="placedetail-category">{{item.category.name}}</div>
+            <div class="placedetail-editlink"><a href="#" data-ng-click="editItem(item)">Suggest Edits</a></div>
+        </div>
+
+        <div class="placedetail-description" ng-show="item.description">&bdquo;{{item.description}}&ldquo;</div>
+
+        <div class="placedetail-website" ng-show="item.web"><a href="{{item.web}}" target="_blank">{{item.web}}</a></div>
+
+        <div class="placedetail-address">{{item.street}}, {{item.zip}} {{item.town}}, Slovakia</div>
+
+        <div class="placedetail-contact">
+            <span class="placedetail-email" ng-show="item.email">{{item.email}}</span>
+            <span class="placedetail-separator" ng-show="item.phone && item.email"> | </span>
+            <span class="placedetail-phone" ng-show="item.phone">{{item.phone}}</span>
+        </div>
+
+    </div>
+</div>

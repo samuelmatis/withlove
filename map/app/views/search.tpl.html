@@ -1,0 +1,93 @@
+<div>
+    <div ng-hide="addPlaceFormVisible" id="search-panel">
+        <form>
+            <input placeholder="Search in the database..." id="search-input" autocomplete="off" ng-model="query" ng-change="search()">
+            <div class="search-reset-area">
+                <a ng-show="query" ng-click="resetSearchQuery()" href="#" class="search-reset-icon"><img alt="Reset Search" src="images/reset_search.png" /></a>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+        <a href="#" class="autocomplete-place" ng-repeat="place in places | placesFuseSearchStrict:query" ng-click="showPlace(place.latitude, place.longitude)"
+           ng-style="{'background-image':'url('+place.category.icon_normal+')','background-position':'0px 2px','background-color':place.category.color,'background-repeat':'no-repeat'}">
+            {{place.name}}
+        </a>
+        <div ng-show="query" class="search-hint">Not here? Add your place now:</div>
+        <a ng-show="query" href="#" class="add-place-button" ng-click="showAddPlaceForm()">ADD YOUR PLACE</a>
+    </div>
+
+    <div ng-show="addPlaceFormVisible" id="addplaceform-wrapper">
+        <form name="addPlaceForm">
+            <div>
+                <div class="addplaceform-datarow">
+                    <div class="selected-category {{selectedCategory.slug}}" data-category="startup"
+                         ng-style="{'background-image':'url('+selectedCategory.icon_normal+')','background-position':'0px 2px','background-color':selectedCategory.color,'background-repeat':'no-repeat','color':'#FFFFFF'}">
+                        <div class="category-inside">
+                            {{selectedCategory.name}}
+                        </div>
+                        <span class="addplaceform-select-arrow"><img src="images/select-arrow.png"></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="category-picker">
+                    <div data-ng-repeat="category in categories"
+                         class="category {{category.slug}}"
+                         data-category="{{category.slug}}"
+                         data-category-id="{{category.id}}"
+                         ng-style="{'background-image': 'url('+category.icon_normal+')','background-position':'0px 2px','background-color':category.color,'background-repeat':'no-repeat'}"
+                         select-stairs>
+                        <div class="category-inside">
+                            {{category.name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="addplaceform-datarow">
+                    <span class="addplaceform-icon-wrapper"><img src="images/blank.png" alt="" /></span>
+                    <input type="text" required ng-trim="true" placeholder="Place name..." autocomplete="off" name="companyName" class="addplaceform-input" ng-model="form.name" ng-pattern="/^([a-zA-Z0-9-_:?!.\/ ]{1,25})$/">
+                    <span ng-show="addPlaceForm.companyName.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
+                    <span ng-hide="addPlaceForm.companyName.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                </div>
+                <div class="addplaceform-datarow">
+                    <span class="addplaceform-icon-wrapper"><img src="images/address.png" alt="Address" /></span>
+                    <input type="text" ng-pattern="/^\s*\w*\s*$/" required ng-trim="true" placeholder="Town..." autocomplete="off" name="companyTown" class="addplaceform-input" ng-model="form.town">
+                    <span ng-show="addPlaceForm.companyTown.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
+                    <span ng-hide="addPlaceForm.companyTown.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                </div>
+                <div class="addplaceform-datarow">
+                    <span class="addplaceform-icon-wrapper"><img src="images/blank.png" alt="" /></span>
+                    <input type="text" required ng-trim="true" placeholder="Street..." autocomplete="off" name="companyStreet" class="addplaceform-input" ng-model="form.street">
+                    <span ng-show="addPlaceForm.companyStreet.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
+                    <span ng-hide="addPlaceForm.companyStreet.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                </div>
+                <div class="addplaceform-datarow">
+                    <span class="addplaceform-icon-wrapper"><img src="images/website.png" alt="Website" /></span>
+                    <input type="text" ng-trim="true" placeholder="Website..." autocomplete="off" name="companyWebsite" class="addplaceform-input" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" ng-model="form.web">
+                    <span ng-show="addPlaceForm.companyWebsite.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
+                    <span ng-hide="addPlaceForm.companyWebsite.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                </div>
+                <div class="addplaceform-datarow">
+                    <span class="addplaceform-icon-wrapper"><img src="images/email.png" alt="E-Mail" /></span>
+                    <input type="text" ng-trim="true" placeholder="E-Mail..." autocomplete="off" name="companyEmail" class="addplaceform-input" ng-model="form.email" ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
+                    <span ng-show="addPlaceForm.companyEmail.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
+                    <span ng-hide="addPlaceForm.companyEmail.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                </div>
+                <div class="addplaceform-datarow">
+                    <span class="addplaceform-icon-wrapper"><img src="images/phone.png" alt="Phone" /></span>
+                    <input type="text" ng-trim="true" placeholder="Phone..." autocomplete="off" name="companyPhone" class="addplaceform-input" ng-model="form.phone" ng-pattern="/^(\+?[0-9\-\/\(\) ]{3,24})$/">
+                    <span ng-show="addPlaceForm.companyPhone.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
+                    <span ng-hide="addPlaceForm.companyPhone.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                </div>
+                <div class="addplaceform-datarow textarea-datarow">
+                    <span class="addplaceform-icon-wrapper"><img alt="" src="images/blank.png"></span>
+                    <textarea ng-trim="true" placeholder="Description..." ng-model="form.description" name="companyDescription" class="addplaceform-textarea" data-maxlength="160"></textarea>
+                    <span class="addplaceform-description-characters"><span class="characters-remaining">0/160</span></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <button class="addplaceform-addbutton" ng-show="!editAction" ng-click="saveNewPlace()"><img src="images/button-loader.gif" style="display: none;"><span>ADD THIS PLACE</span></button>
+            <button class="addplaceform-editbutton" ng-show="editAction" ng-click="saveEditData()"><img src="images/button-loader.gif" style="display: none;"><span>EDIT THIS PLACE</span></button>
+            <a href="#" class="addplaceform-cancelbutton" ng-click="cancelAddPlaceForm()">or CANCEL, I changed my mind.</a>
+        </form>
+    </div>
+</div>
