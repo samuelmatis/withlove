@@ -39,8 +39,10 @@ angular.module('withloveApp')
 
             if($scope.form.category !== '') {
 
-                if($scope.form.web.indexOf('http') < 0) {
-                    $scope.form.web = 'http://' + $scope.form.web;
+                if(typeof $scope.form.web !== 'undefined') {
+                    if($scope.form.web.indexOf('http') < 0) {
+                        $scope.form.web = 'http://' + $scope.form.web;
+                    }
                 }
 
                 $scope.addPlaceFormDisable();
@@ -77,7 +79,8 @@ angular.module('withloveApp')
                     $scope.addPlaceFormBlock();
                 });
             } else {
-                console.log($scope.form);
+                $scope.selected_category = $scope.defaultCategory;
+
             }
         };
 
