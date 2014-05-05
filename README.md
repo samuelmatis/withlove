@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/Phirational/withlove.png)](https://codeclimate.com/github/Phirational/withlove)
 # Withlove.sk - Mapping the Slovak Startup Community
 
 Withlove.sk is a map of Slovak start-up ecosystem - start-up companies, investors, community hubs and co-working spaces. Our content is based on crowd-sourcing. Companies and individuals come to WithLove to create and update their profile. In addition, we developed processes to insure the data is up to date and accurate.
