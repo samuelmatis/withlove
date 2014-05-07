@@ -1,7 +1,5 @@
 <?php
 
-namespace Phirational\Withlove;
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -14,9 +12,9 @@ class CreatePeopleTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('people', function (Blueprint $table) {
+		Schema::create('people', function (Blueprint $table) {
 
-            $table->increment('id');
+            $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
@@ -33,7 +31,7 @@ class CreatePeopleTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('people');
 	}
 
 }

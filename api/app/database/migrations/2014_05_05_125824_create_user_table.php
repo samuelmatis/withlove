@@ -1,20 +1,17 @@
 <?php
 
-namespace Phirational\Withlove;
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
-{
+class CreateUserTable extends Migration {
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
@@ -24,20 +21,21 @@ class CreateUsersTable extends Migration
             $table->string('street');
             $table->string('zip');
             $table->string('town');
-            $table->string('telephone');
+            $table->string('telephone')->nullable();
             $table->integer('role');
 
             $table->timestamps();
         });
-    }
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop('users');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('users');
+	}
+
 }

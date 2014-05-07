@@ -1,7 +1,5 @@
 <?php
 
-namespace Phirational\Withlove;
-
 class DatabaseSeeder extends Seeder
 {
     /**
