@@ -1,11 +1,9 @@
 <?php
 
-namespace Phirational\Withlove;
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlacesEditTable extends Migration {
+class CreatePlaceEditTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -18,8 +16,8 @@ class CreatePlacesEditTable extends Migration {
 
             $table->increments('id');
             $table->string('name');
-            $table->int('category');
-            $table->int('original');
+            $table->integer('category');
+            $table->integer('original');
             $table->string('description');
             $table->float('latitude');
             $table->float('longitude');
@@ -30,7 +28,6 @@ class CreatePlacesEditTable extends Migration {
             $table->string('email');
             $table->string('tags');
             $table->string('phone');
-            $table->string('tags');
             $table->string('country');
             $table->string('parent');
             $table->enum('status', array('new', 'updated'));
@@ -46,7 +43,7 @@ class CreatePlacesEditTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('places_edit');
 	}
 
 }
