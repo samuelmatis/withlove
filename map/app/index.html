@@ -40,6 +40,10 @@
     <meta property="og:type" content="website"/>
     <meta name="viewport" content="width=device-width">
 
+    <!--[if lte IE 9]>
+        <script src="scripts/vendor/xdomain.min.js" slave="http://api.withlove.sk/proxy.html"></script>
+    <![endif]-->
+
     <!-- external styles -->
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="http://api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.css">
@@ -60,11 +64,6 @@
     <div app-search=""></div>
     <div app-map=""></div>
 
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-30060398-4']);
@@ -76,7 +75,14 @@
         })();
     </script>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <![endif]-->
+
+    <script>window.jQuery || document.write('<script src="bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
     <script src="bower_components/angular/angular.min.js"></script>
     <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.js'></script>
 
