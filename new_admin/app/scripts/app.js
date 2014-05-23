@@ -37,7 +37,7 @@ angular.module('withlove.admin', [
             authenticate: false
         })
         .otherwise({
-            redirectTo: '/login'
+            redirectTo: '/'
         });
 
 })
