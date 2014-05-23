@@ -1,0 +1,114 @@
+<div id="main-wrapper">
+    <div>
+        <div id="search-bar">
+            <input type="text" placeholder="Search places..." ng-model="search.name">
+        </div>
+
+        <div ng-repeat="place in suggest_places | filter:search">
+            <div my-directive class="box">
+
+                <div class="top-line">
+
+                    <div class="name-box {{place.category.slug}}">
+                        <div class="inside-wrapper">
+                            {{place.name}}
+                        </div>
+                    </div>
+
+                    <div class="address-box">
+                        {{place.street}}, {{place.town}}
+                        <a href="#" class="map"> </a>
+                        <a href="#/suggest" class="approve" data-ng-click="approveSuggestion(place)"> </a>
+                        <a href="#/suggest" class="remove" data-ng-click="showDeleteSuggestionModal(place)"> </a>
+                    </div>
+
+                </div>
+
+                <div class="top-line">
+
+                    <div class="default-inside-box">
+                        <img src="images/web_icon.png" class="web-icon">
+                        <a href="{{place.web}}" target="_blank">{{place.web}}</a>
+                    </div>
+
+                    <div class="default-inside-box undefined">
+                        <img src="images/email_icon.png" class="email-icon">
+                        <a href="mailto:{{place.email}}">{{place.email}}</a>
+                    </div>
+
+                    <div class="default-inside-box">
+                        <img src="images/phone_icon.png" class="phone-icon">
+                        {{place.phone}}
+                    </div>
+
+                </div>
+
+                <div class="content-box">
+
+                    <div class="text">
+                        {{place.description}}
+                    </div>
+
+                    <div class="suggest_status">
+                        {{place.status}}
+                    </div>
+
+                    <div class="item_number">
+                        {{$index+1}} / {{suggest_places.length}}
+                    </div>
+
+                </div>
+
+                <div ng-if="place.original != null">
+                    <div class="top-line">
+
+                        <div class="name-box {{place.original.category.slug}}">
+                            <div class="inside-wrapper">
+                                {{place.original.name}}
+                            </div>
+                        </div>
+
+                        <div class="address-box">
+                            {{place.original.street}}, {{place.original.town}}
+                        </div>
+
+                    </div>
+
+                    <div class="top-line">
+
+                        <div class="default-inside-box">
+                            <img src="images/web_icon.png" class="web-icon">
+                            <a href="{{place.original.web}}" target="_blank">{{place.original.web}}</a>
+                        </div>
+
+                        <div class="default-inside-box undefined">
+                            <img src="images/email_icon.png" class="email-icon">
+                            <a href="mailto:{{place.original.email}}">{{place.original.email}}</a>
+                        </div>
+
+                        <div class="default-inside-box">
+                            <img src="images/phone_icon.png" class="phone-icon">
+                            {{place.original.phone}}
+                        </div>
+
+                    </div>
+
+                    <div class="content-box">
+
+                        <div class="text">
+                            {{place.original.description}}
+                        </div>
+
+                        <div class="suggest_status">
+                            ORIGINAL
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="map-small" class="map-box2"> </div>
+    </div>
+</div>

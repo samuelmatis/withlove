@@ -54,6 +54,19 @@ angular.module('withlove.admin', [
                 }
             }
         })
+        .when('/suggest', {
+            templateUrl: 'views/suggest.html',
+            controller: 'SuggestCtrl',
+            authenticate: true,
+            resolve: {
+                suggestPlaces: function(placesService) {
+                    return placesService.getSuggestPlaces();
+                },
+                categories: function(categoriesService) {
+                    return categoriesService.getCategories();
+                }
+            }
+        })
         .when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl',
