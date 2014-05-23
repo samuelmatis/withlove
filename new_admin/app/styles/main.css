@@ -51,24 +51,28 @@ nav li .disabled {
 
 nav li .list {
     background: #80bcae;
-    border-bottom: 5px solid #80bcae;
+    border-bottom: 5px solid #598379;
 }
 
 nav li .list.active {
-    border-bottom: 5px solid #598379;
+    border-bottom: 5px solid #80bcae;
 }
 
 nav li .add-place {
     background: #e07366;
-    border-bottom: 5px solid #e07366;
+    border-bottom: 5px solid #ae574d;
 }
 
 nav li .add-place.active {
-    border-bottom: 5px solid #ae574d;
+    border-bottom: 5px solid #e07366;
 }
 
 nav li .review {
     background: #edce33;
+    border-bottom: 5px solid #B39500;
+}
+
+nav li .review.active {
     border-bottom: 5px solid #edce33;
 }
 

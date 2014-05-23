@@ -1,28 +1,10 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('HeaderCtrl', function($scope, placesService, $cookieStore, $location) {
+    .controller('HeaderCtrl', function($scope, $location) {
 
-        $scope.loginPage = function() {
-            return $location.path() === '/login';
-        };
-
-        $scope.$watch(function() {
-            return $cookieStore.get('user');
-        }, function(newValue) {
-
-            // Get places after user login
-            placesService.getPlaces()
-                .then(function(result) {
-                    $scope.places = result.data;
-                });
-
-            placesService.getSuggestPlaces()
-                .then(function(result) {
-                    $scope.suggestPlaces = result.data;
-                });
-        });
-
-
+        $scope.isActive = function(path) {
+            return $location.path() === path;
+        }
 
     });
