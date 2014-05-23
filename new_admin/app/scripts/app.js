@@ -21,6 +21,8 @@ angular.module('withlove.admin', [
 
     $routeProvider
         .when('/', {
+            templateUrl: 'views/list.html',
+            controller: 'ListCtrl',
             authenticate: true
         })
         .when('/login', {
