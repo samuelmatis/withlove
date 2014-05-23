@@ -4,7 +4,8 @@ angular.module('withlove.admin', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
 ])
 .constant('baseUrl', 'api/')
 .constant('mapTypes', {
@@ -23,6 +24,11 @@ angular.module('withlove.admin', [
         .when('/', {
             templateUrl: 'views/list.html',
             controller: 'ListCtrl',
+            authenticate: true
+        })
+        .when('/edit/:placeId', {
+            templateUrl: 'views/edit.html',
+            controller: 'EditCtrl',
             authenticate: true
         })
         .when('/login', {
