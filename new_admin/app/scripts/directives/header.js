@@ -6,5 +6,5 @@ angular.module('withlove.admin')
             restrict: 'E',
             templateUrl: 'views/header.html',
             controller: 'HeaderCtrl'
-        }
+        };
     });

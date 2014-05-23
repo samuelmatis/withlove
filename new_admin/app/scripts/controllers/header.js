@@ -5,6 +5,6 @@ angular.module('withlove.admin')
 
         $scope.isActive = function(path) {
             return $location.path() === path;
-        }
+        };
 
     });

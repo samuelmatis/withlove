@@ -12,9 +12,9 @@ angular.module('withlove.admin')
                 defaultOption: '=defaultoption',
                 selectboxValue: '=ngModel'
             },
-            link: function (scope, element, attrs) {
+            link: function() {
 
-               angular.element('.selected-category').click(function() {
+                angular.element('.selected-category').click(function() {
                     var category = angular.element(this).attr('data-category');
                     var selected = angular.element('.category.' + category);
 

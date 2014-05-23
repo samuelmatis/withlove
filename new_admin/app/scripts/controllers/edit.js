@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('EditCtrl', function($scope, $routeParams, $location, $modal, place, categories) {
+    .controller('EditCtrl', function($scope, $location, $modal, placesService, place, categories) {
 
         $scope.editPlace = [];
         $scope.categories = [];
@@ -11,7 +11,7 @@ angular.module('withlove.admin')
         $scope.editPlace.selectedCategory = $scope.editPlace.category.id;
 
         $scope.categories = categories;
-        $scope.selected_category = $scope.categories[0];
+        $scope.selectedCategory = $scope.categories[0];
 
 
         $scope.redirectHome = function() {
@@ -33,15 +33,15 @@ angular.module('withlove.admin')
                                 return {
                                     title: 'ÚPRAVA MIESTA',
                                     text: 'Úprava miesta prebehla úspešne.'
-                                }
+                                };
                             }
                         }
                     });
                 }, function(response) {
 
-                    var response = '';
+                    var modalResponse = '';
                     angular.forEach(response.data.errors, function(error) {
-                        response += ' ' + error;
+                        modalResponse += ' ' + error;
                     });
 
                     $modal.open({
@@ -51,14 +51,15 @@ angular.module('withlove.admin')
                             data: function(){
                                 return {
                                     title: 'ÚPRAVA MIESTA',
-                                    text: 'Úprava miesta neprebehla úspešne. ' + response
-                                }
+                                    text: 'Úprava miesta neprebehla úspešne. ' + modalResponse
+                                };
                             }
                         }
                     });
+
                 });
 
             }
-        }
+        };
 
     });

@@ -12,7 +12,7 @@ angular.module('withlove.admin')
         this.loginUser = function(email, password) {
 
             var key;
-            if(userApiKey != '') {
+            if(userApiKey !== '') {
                 key = userApiKey;
             }
 
@@ -31,11 +31,9 @@ angular.module('withlove.admin')
 
                     return true;
 
-                }, function(result) {
-
+                }, function() {
                     userApiKey = '';
                     return false;
-
                 });
 
         };
@@ -44,7 +42,7 @@ angular.module('withlove.admin')
 
             var deffered = $q.defer();
 
-            if(user.apiKey != '') {
+            if(user.apiKey !== '') {
                 deffered.resolve();
             } else {
                 this.loginUser();
@@ -55,4 +53,4 @@ angular.module('withlove.admin')
 
         };
 
-    })
+    });

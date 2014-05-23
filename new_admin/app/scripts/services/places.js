@@ -12,7 +12,7 @@ angular.module('withlove.admin')
         };
 
         this.addPlace = function(place) {
-            return $http.post(baseUrl + 'place');
+            return $http.post(baseUrl + 'place', place);
         };
 
         this.editPlace = function(place) {
@@ -29,14 +29,14 @@ angular.module('withlove.admin')
         };
 
         this.addSuggestPlace = function() {
-            return $http.post(baseUrl + 'placesuggest')
+            return $http.post(baseUrl + 'placesuggest');
         };
 
         this.approveSuggestPlace = function(place) {
             return $http.put(baseUrl + 'place/' + place.original, place);
         };
 
-        this.deleteSuggestPlace = function() {
+        this.deleteSuggestPlace = function(id) {
             return $http.delete(baseUrl + 'placesuggest/' + id);
         };
 

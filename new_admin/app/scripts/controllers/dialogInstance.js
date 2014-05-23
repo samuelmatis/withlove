@@ -3,7 +3,7 @@
 angular.module('withlove.admin')
     .controller('DialogInstanceCtrl', function($scope, $modalInstance, data) {
 
-        $scope.modal_data = data;
+        $scope.modalData = data;
 
         $scope.ok = function() {
             $modalInstance.close(data.place);
