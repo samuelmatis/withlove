@@ -44,6 +44,16 @@ angular.module('withlove.admin', [
                 }
             }
         })
+        .when('/add', {
+            templateUrl: 'views/add.html',
+            controller: 'AddCtrl',
+            authenticate: true,
+            resolve: {
+                categories: function(categoriesService) {
+                    return categoriesService.getCategories();
+                }
+            }
+        })
         .when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl',
