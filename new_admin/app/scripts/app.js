@@ -24,12 +24,25 @@ angular.module('withlove.admin', [
         .when('/', {
             templateUrl: 'views/list.html',
             controller: 'ListCtrl',
-            authenticate: true
+            authenticate: true,
+            resolve: {
+                places: function(placesService) {
+                    return placesService.getPlaces();
+                }
+            }
         })
         .when('/edit/:placeId', {
             templateUrl: 'views/edit.html',
             controller: 'EditCtrl',
-            authenticate: true
+            authenticate: true,
+            resolve: {
+                place: function(placesService, $route) {
+                    return placesService.getPlace($route.current.params.placeId);
+                },
+                categories: function(categoriesService) {
+                    return categoriesService.getCategories();
+                }
+            }
         })
         .when('/login', {
             templateUrl: 'views/login.html',

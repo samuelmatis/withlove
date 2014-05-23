@@ -1,27 +1,18 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('EditCtrl', function($scope, $routeParams, $location, $modal, placesService, categoriesService) {
+    .controller('EditCtrl', function($scope, $routeParams, $location, $modal, place, categories) {
 
         $scope.editPlace = [];
         $scope.categories = [];
         $scope.form = {};
 
-        if ($routeParams.placeId !== undefined) {
-            var placeId = $routeParams.placeId
-            placesService.getPlace(placeId)
-                .then(function(result) {
-                    $scope.editPlace = result.data;
-                    $scope.editPlace.selectedCategory = $scope.editPlace.category.id;
-                });
-        } else {
-            $location.path('/edit');
-        }
+        $scope.editPlace = place.data;
+        $scope.editPlace.selectedCategory = $scope.editPlace.category.id;
 
-        categoriesService.getCategories().then(function(categories) {
-            $scope.categories = categories;
-            $scope.selected_category = $scope.categories[0];
-        });
+        $scope.categories = categories;
+        $scope.selected_category = $scope.categories[0];
+
 
         $scope.redirectHome = function() {
             $location.path('/');

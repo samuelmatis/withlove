@@ -1,13 +1,11 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('ListCtrl', function($scope, placesService) {
+    .controller('ListCtrl', function($scope, places) {
 
         $scope.places = [];
         $scope.nameFilter = '';
 
-        placesService.getPlaces().then(function(places) {
-            $scope.places = places.data;
-        });
+        $scope.places = places.data;
 
     });
