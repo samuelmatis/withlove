@@ -1,0 +1,10 @@
+<nav ng-hide="loginPage()">
+    <ul>
+        <li><a href="#" class="list active">List {{places.length}} places</a></li>
+        <li><a href="#/add" class="add-place active">Add a new place</a></li>
+        <li>
+            <a ng-show="(suggestPlaces.length > 0)" href="#/suggest" class="review">Review suggestions</a>
+            <span ng-hide="(suggestPlaces.length > 0)" class="disabled">Review suggestions</span>
+        </li>
+    </ul>
+</nav>

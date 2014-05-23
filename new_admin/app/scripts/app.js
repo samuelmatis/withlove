@@ -6,7 +6,6 @@ angular.module('withlove.admin', [
     'ngSanitize',
     'ngRoute'
 ])
-.constant('apiKey', '')
 .constant('baseUrl', 'api/')
 .constant('mapTypes', {
     'defaultMap': 'chiwo.geid1fd8',
@@ -22,7 +21,7 @@ angular.module('withlove.admin', [
 
     $routeProvider
         .when('/', {
-
+            authenticate: true
         })
         .when('/login', {
             templateUrl: 'views/login.html',
@@ -34,8 +33,12 @@ angular.module('withlove.admin', [
         });
 
 })
-.run(function($rootScope, $location, authService) {
+.run(function($rootScope, $location, $http, $cookieStore, authService) {
+
     $rootScope.$on('$routeChangeStart', function(event, currentRoute, previousRoute) {
+
+        $http.defaults.headers.common.Authorization = $cookieStore.get('user');
+
         var page_authenticate, userAuthenticated;
 
         if (typeof currentRoute.authenticate === 'undefined') {

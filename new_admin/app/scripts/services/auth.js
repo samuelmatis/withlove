@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .service('authService', function($cookieStore, $http, $q, $location, baseUrl, apiKey) {
+    .service('authService', function($cookieStore, $http, $q, $location, baseUrl) {
 
         var userApiKey = $cookieStore.get('user') || '';
         var user = {
@@ -19,13 +19,14 @@ angular.module('withlove.admin')
             return $http.post(baseUrl + 'user/login', {email: email, password: password})
                 .then(function(result) {
 
-                    var apiToken = result.data.api_token;
+                    var apiKey = result.data.api_token;
 
                     user.isLogged = true;
-                    user.apiKey = apiToken;
-                    apiKey = apiToken;
+                    user.apiKey = apiKey;
 
-                    $cookieStore.put('user', apiToken);
+                    $http.defaults.headers.common.Authorization = apiKey;
+
+                    $cookieStore.put('user', apiKey);
                     $location.path('/');
 
                     return true;
@@ -44,7 +45,6 @@ angular.module('withlove.admin')
             var deffered = $q.defer();
 
             if(user.apiKey != '') {
-                apiKey = user.apiKey;
                 deffered.resolve();
             } else {
                 this.loginUser();
