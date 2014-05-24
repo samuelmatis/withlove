@@ -70,7 +70,7 @@ Route::filter('token_auth', function () {
             return Response::make('Invalid credentials.', 401);
         }
     } catch(\Illuminate\Encryption\DecryptException $e) {
-        return Response::make('Invalid credentials.', 401);
+        return Response::make(sprintf('API Token error: %s', $e->getMessage()), 401);
     }
 });
 
