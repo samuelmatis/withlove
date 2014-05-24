@@ -1,0 +1,12 @@
+<div class="delete-modal">
+    <div class="modal-header">
+        DELETE PLACE
+    </div>
+    <div class="modal-body">
+        Are you sure want to delete place {{ modalData.text }}{{ modalData.place.name }} in {{ modalData.place.town }} ?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="ok()">YES, delete it</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
