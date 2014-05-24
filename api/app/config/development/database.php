@@ -54,34 +54,14 @@ return array(
 
         'mysql' => array(
             'driver'    => 'mysql',
-            'host'      => '',                      // TODO: Setup your database
-            'database'  => '',                      // connection here.
-            'username'  => '',
-            'password'  => '',
+            'host'      => $_ENV['DB_HOST'],
+            'database'  => $_ENV['DB_DATABASE'],
+            'username'  => $_ENV['DB_USERNAME'],
+            'password'  => $_ENV['DB_PASSWORD'],
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
             'port'      => '3306'
-        ),
-
-        'pgsql' => array(
-            'driver'   => 'pgsql',
-            'host'     => 'localhost',
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
-        ),
-
-        'sqlsrv' => array(
-            'driver'   => 'sqlsrv',
-            'host'     => 'localhost',
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
-            'prefix'   => '',
         ),
 
     ),
