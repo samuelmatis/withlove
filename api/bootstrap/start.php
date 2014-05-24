@@ -13,7 +13,7 @@
 
 $app = new Illuminate\Foundation\Application;
 
-$app->redirectIfTrailingSlash();
+// $app->redirectIfTrailingSlash();
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ $app->redirectIfTrailingSlash();
 
 $env = $app->detectEnvironment(array(
 
-    'development' => array('127.0.0.1', 'localhost'),
+    'development' => array('127.0.0.1', 'localhost', 'Samuels-MacBook-Pro.local'),
     'production' => array('withlove.sk')
 
 ));
