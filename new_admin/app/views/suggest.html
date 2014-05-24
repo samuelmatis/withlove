@@ -4,7 +4,7 @@
             <input type="text" placeholder="Search places..." ng-model="search.name">
         </div>
 
-        <div ng-repeat="place in suggest_places | filter:search">
+        <div ng-repeat="place in suggestPlaces | filter:search">
             <div my-directive class="box">
 
                 <div class="top-line">
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="item_number">
-                        {{$index+1}} / {{suggest_places.length}}
+                        {{$index+1}} / {{suggestPlaces.length}}
                     </div>
 
                 </div>

@@ -3,8 +3,12 @@
 angular.module('withlove.admin')
     .controller('SuggestCtrl', function($scope, $routeParams, mapTypes, placesService, suggestPlaces, categories) {
 
-        $scope.suggestPlaces = suggestPlaces;
-        $scope.categories = categories;
+        $scope.suggestPlaces = suggestPlaces.data;
+        $scope.categories = categories.data;
+
+        console.log(suggestPlaces);
+        console.log(categories);
+
 
         var mapboxStyle = mapTypes.nightMap;
         var lastOpenPopupName;
@@ -22,6 +26,7 @@ angular.module('withlove.admin')
             zoomToBoundsOnClick: false
         });
         var lastOpenPopupName;
+
 
         map.addLayer(markers);
 
