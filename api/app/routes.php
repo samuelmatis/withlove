@@ -10,9 +10,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::post('api/user/login', 'Phirational\\Withlove\\Controllers\\UserController@login');
+Route::post('user/login', 'Phirational\\Withlove\\Controllers\\UserController@login');
 // Route group for API versioning
-Route::group(array('prefix' => 'api', 'before' => 'token_auth'), function () {
+Route::group(array('before' => 'token_auth'), function () {
     Route::post('place/{id}/assign', 'Phirational\\Withlove\\Controllers\\PlaceController@assign');
     Route::post('people/{id}/assign', 'Phirational\\Withlove\\Controllers\\PeopleController@assign');
 
