@@ -1,20 +1,16 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('SuggestCtrl', function($scope, $routeParams, mapTypes, placesService, suggestPlaces, categories) {
+    .controller('SuggestCtrl', function($scope, $routeParams, $modal, mapTypes, placesService, suggestPlaces, categories) {
 
         $scope.suggestPlaces = suggestPlaces.data;
         $scope.categories = categories.data;
 
-        console.log(suggestPlaces);
-        console.log(categories);
-
-
         var mapboxStyle = mapTypes.nightMap;
         var lastOpenPopupName;
 
-        var map = L.mapbox.map('map-small', mapboxStyle, {zoomControl: false}).setView([48.3774, 17.5887], 16);
-        new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+        $scope.map = L.mapbox.map('map-small', mapboxStyle, {zoomControl: false}).setView([48.3774, 17.5887], 16);
+        new L.Control.Zoom({ position: 'bottomright' }).addTo($scope.map);
 
         var markers = L.markerClusterGroup({
             maxClusterRadius: 20,
@@ -28,7 +24,7 @@ angular.module('withlove.admin')
         var lastOpenPopupName;
 
 
-        map.addLayer(markers);
+        $scope.map.addLayer(markers);
 
         $scope.clearMap = function() {
             lastOpenPopupName = '';
@@ -37,12 +33,13 @@ angular.module('withlove.admin')
 
         $scope.populateMap = function(place) {
 
+            var item = place;
             var index, iconPin;
-            if (category.length > 0) {
+            if (place.category.length > 0) {
                 index = $scope.filters.indexOf(category[0].name);
                 iconPin = category[0].icon_pin;
             } else {
-                index -= 1;
+                index = -1;
                 iconPin = 'http://api.withlove.sk/images/pins/startup.png';
             }
 
@@ -60,7 +57,7 @@ angular.module('withlove.admin')
                     })
                 });
 
-                var dataId = $scope.places.indexOf(item);
+                var dataId = $scope.suggestPlaces.indexOf(item);
                 var popupTemplate = '<div class="angularWrapper" id="angularWrapperId-' + dataId + '" data-id="' + dataId + '"></div>';
                 marker.bindPopup(popupTemplate, {
                     closeButton: false,
@@ -75,7 +72,7 @@ angular.module('withlove.admin')
 
         $scope.showDeleteSuggestionModal = function (place) {
             var modalInstance = $modal.open({
-                templateUrl: 'deleteModalWindow',
+                templateUrl: 'views/deleteModal.html',
                 controller: 'DialogInstanceCtrl',
                 resolve: {
                     data: function() {
@@ -116,12 +113,12 @@ angular.module('withlove.admin')
         $scope.approveSuggestion = function (place) {
             if (place.original !== null) {
                 place.category = place.category.id;
-                $suggest_approve = placesService.approveSuggestPlace(place);
+                var suggest_approve = placesService.approveSuggestPlace(place);
             } else {
-                $suggest_approve = placesService.addSuggestPlace(place);
+                var suggest_approve = placesService.addSuggestPlace(place);
             }
 
-            $suggest_approve.then(function(p) {
+            suggest_approve.then(function(p) {
                 if(p.status == 200) {
                     $scope.removeSuggestion(place);
                 }
