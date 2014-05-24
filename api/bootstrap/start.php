@@ -28,7 +28,12 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-    'development' => array('127.0.0.1', 'localhost', 'Samuels-MacBook-Pro.local'),
+    'development' => array(
+        '127.0.0.1',
+        'localhost',
+        'freezys-MacBook-Air.local',
+        'Samuels-MacBook-Pro.local',
+    ),
     'production' => array('withlove.sk')
 
 ));
