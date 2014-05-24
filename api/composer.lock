@@ -3,8 +3,42 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2e89b9b5e4635fe9339fadf92c3fe50c",
+    "hash": "2d676ad0b7f4fc0d29d36ab33e9baa75",
     "packages": [
+        {
+            "name": "barryvdh/laravel-cors",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-cors.git",
+                "reference": "9c1e6be68f6909fcd584c77b3b2ea2b628cccf1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-cors/zipball/9c1e6be68f6909fcd584c77b3b2ea2b628cccf1a",
+                "reference": "9c1e6be68f6909fcd584c77b3b2ea2b628cccf1a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.x",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Barryvdh\\Cors": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application",
+            "time": "2013-12-17 08:41:06"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "1.0.2",
@@ -1640,9 +1674,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laravel/framework": 0
-    },
+    "stability-flags": [
+
+    ],
     "platform": [
 
     ],
