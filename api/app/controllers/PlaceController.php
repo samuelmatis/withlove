@@ -62,16 +62,6 @@ class PlaceController extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @return Response
@@ -158,17 +148,6 @@ class PlaceController extends BaseController
             return Response::json(array('status' => 'error',
                 'msg' => 'This place was not found.'), 404);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

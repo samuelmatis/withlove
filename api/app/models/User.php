@@ -1,11 +1,28 @@
 <?php
-
 namespace Phirational\Withlove\Models;
 
+use Eloquent;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use Eloquent;
 
+/**
+ * User
+ *
+ * @property integer $id
+ * @property string $email
+ * @property string $password
+ * @property string $firstname
+ * @property string $lastname
+ * @property string $street
+ * @property string $zip
+ * @property string $town
+ * @property string $telephone
+ * @property integer $role
+ * @property string $api_token
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class User extends Eloquent implements UserInterface, RemindableInterface
 {
     /**
@@ -13,7 +30,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'user';
 
     /**
      * The attributes excluded from the model's JSON form.
