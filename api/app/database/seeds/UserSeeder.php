@@ -1,10 +1,14 @@
 <?php
 
+use Phirational\Withlove\Models\User;
+
 class UsersSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('users')->delete();
+        $tblUser = User::getModel()->getTable();
+
+        DB::table($tblUser)->delete();
 
         $users = [
             [
@@ -29,6 +33,6 @@ class UsersSeeder extends Seeder
             ]
         ];
  
-        DB::table('users')->insert($users);
+        DB::table($tblUser)->insert($users);
     }
 }

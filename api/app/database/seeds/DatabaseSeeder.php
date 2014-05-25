@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         Eloquent::unguard();
 
         if ($this->isInLastMigrations('2014_05_05_125824_create_user_table')) {
-            $this->call('UsersSeeder');
+            $this->call('UserSeeder');
         }
     }
 }
