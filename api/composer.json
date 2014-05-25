@@ -6,6 +6,7 @@
 	"require": {
         "barryvdh/laravel-cors": "~0.1.2",
 		"laravel/framework": "~4.1.29",
+        "laravelbook/ardent": "~2.4",
         "phirational/laravel-conditional-seeder": "~1.0"
 	},
     "require-dev": {
