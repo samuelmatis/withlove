@@ -19,8 +19,11 @@ class SyncWithProduction extends Migration {
 
         Schema::table('category', function (Blueprint $table) {
             /** @var Illuminate\Database\Schema\Blueprint $table */
-            $table->integer('order')->default('0')->after('slug');
+            $table->integer('order')->default('0')->after('icon_over');
+            $table->renameColumn('icon_over', 'icon_pin');
         });
+
+        DB::statement("ALTER TABLE `category` CHANGE `slug` `slug` varchar(255) COLLATE 'utf8_unicode_ci' NOT NULL AFTER `name`");
     }
 
     /**
@@ -38,6 +41,7 @@ class SyncWithProduction extends Migration {
         Schema::table('category', function (Blueprint $table) {
             /** @var Illuminate\Database\Schema\Blueprint $table */
             $table->dropColumn('order');
+            $table->renameColumn('icon_pin', 'icon_over');
         });
     }
 
