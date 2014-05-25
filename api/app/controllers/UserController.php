@@ -56,16 +56,6 @@ class UserController extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @return Response
@@ -137,17 +127,6 @@ class UserController extends BaseController
             return Response::json(array('status' => 'error',
                 'msg' => 'You do not have permissions to show user.'), 401);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

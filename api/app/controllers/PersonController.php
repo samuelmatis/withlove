@@ -6,11 +6,11 @@ use Input;
 use Validator;
 use Response;
 use Auth;
-use Phirational\Withlove\Models\People;
+use Phirational\Withlove\Models\Person;
 use Phirational\Withlove\Models\Place;
 use Phirational\Withlove\Models\Parents;
 
-class PeopleController extends BaseController
+class PersonController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -19,23 +19,10 @@ class PeopleController extends BaseController
      */
     public function index()
     {
-        $people = People::all();
-        $people_attributes = array();
+        /** @var Person[] $persons */
+        $persons = Person::all();
 
-        foreach ($people as $row) {
-            $people_attributes[] = $row->getAttributes();
-        }
-        return $people_attributes;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
+        return Response::json(array('persons' => $persons));
     }
 
     /**
@@ -66,7 +53,7 @@ class PeopleController extends BaseController
                 );
                 return Response::json($response, 400);
             } else {
-                $person = new People();
+                $person = new Person();
                 $person->firstname = $input['firstname'];
                 $person->lastname = $input['lastname'];
                 $person->email = isset($input['email']) ? $input['email'] : '';
@@ -93,25 +80,13 @@ class PeopleController extends BaseController
      */
     public function show($id)
     {
-        $person = People::find($id);
+        $person = Person::find($id);
 
         if (! empty($person)) {
-            return $person;
+            return Response::json(array('person' => $person));
         } else {
-            return Response::json(array('status' => 'error',
-                'msg' => 'This person was not found.'), 404);
+            return Response::json(array('status' => 'error', 'msg' => 'This person was not found.'), 404);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -124,7 +99,7 @@ class PeopleController extends BaseController
     {
         if ($this->userRole == 500) {
 
-            $person = People::find($id);
+            $person = Person::find($id);
 
             if (!empty($person)) {
 
@@ -178,7 +153,7 @@ class PeopleController extends BaseController
     {
         if ($this->userRole == 500) {
             $places = Parents::where('children_id', '=', $id)->delete();
-            People::destroy($id);
+            Person::destroy($id);
             return array('status' => 'success');
         } else {
             return Response::json(array('status' => 'error',
@@ -193,7 +168,7 @@ class PeopleController extends BaseController
 
         if ($this->userRole == 500) {
 
-            $person = People::find($id);
+            $person = Person::find($id);
 
             if (!empty($person)) {
 
