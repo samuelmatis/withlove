@@ -1,8 +1,6 @@
 <?php
 namespace Phirational\Withlove\Models;
 
-use Eloquent;
-
 /**
  * Person
  *
@@ -14,7 +12,7 @@ use Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Person extends Eloquent
+class Person extends BaseModel
 {
     /**
      * The database table used by the model.
@@ -22,4 +20,6 @@ class Person extends Eloquent
      * @var string
      */
     protected $table = 'person';
+
+    public $timestamps = true;
 }

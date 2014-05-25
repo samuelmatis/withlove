@@ -1,8 +1,6 @@
 <?php
 namespace Phirational\Withlove\Models;
 
-use Eloquent;
-
 /**
  * PlaceEdit
  *
@@ -26,13 +24,14 @@ use Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class PlaceEdit extends Eloquent
+class PlaceEdit extends BaseModel
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    
     protected $table = 'place_edit';
+
+    public $timestamps = true;
 }
