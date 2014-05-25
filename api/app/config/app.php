@@ -107,6 +107,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
+        // Required packages
         'Barryvdh\Cors\CorsServiceProvider', //barryvdh/laravel-cors
     ),
 

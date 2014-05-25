@@ -4,9 +4,12 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "~4.1.29",
-        "barryvdh/laravel-cors": "~0.1.2"
+        "barryvdh/laravel-cors": "~0.1.2",
+		"laravel/framework": "~4.1.29"
 	},
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "~1.9"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
@@ -24,6 +27,7 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
+            "php artisan ide-helper:generate --env=development",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
