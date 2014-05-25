@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "cd3e983e92f4cd28df5c96c40c367808",
+    "hash": "f22d4719ea510abe9d2edd17b46bc0cd",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -582,6 +582,49 @@
                 "utf8"
             ],
             "time": "2014-05-22 13:59:09"
+        },
+        {
+            "name": "phirational/laravel-conditional-seeder",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Phirational/laravel-conditional-seeder.git",
+                "reference": "c19a5940d825a73338a178a178bda39dcb139093"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Phirational/laravel-conditional-seeder/zipball/c19a5940d825a73338a178a178bda39dcb139093",
+                "reference": "c19a5940d825a73338a178a178bda39dcb139093",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.1.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phirational\\LaravelConditionalSeeder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Marek Viger",
+                    "email": "viger@phirational.com",
+                    "role": "Author"
+                }
+            ],
+            "description": "Laravel trait providing methods for conditional database seeding.",
+            "keywords": [
+                "conditional",
+                "database",
+                "laravel",
+                "migration",
+                "seeder",
+                "trait"
+            ],
+            "time": "2014-05-15 19:02:24"
         },
         {
             "name": "phpseclib/phpseclib",
