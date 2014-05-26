@@ -2,7 +2,7 @@
 
 use Phirational\Withlove\Models\User;
 
-class UsersSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     public function run()
     {
