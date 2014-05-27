@@ -12,9 +12,5 @@
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
     "leaflet.markercluster": "~0.4.0"
-  },
-  "devDependencies": {
-    "angular-mocks": "1.2.15",
-    "angular-scenario": "1.2.15"
   }
 }
