@@ -7,6 +7,7 @@ angular.module('withlove.admin', [
     'ngRoute',
     'ui.bootstrap'
 ])
+.constant('baseUrl', 'http://api.withlove.phi')
 .constant('mapTypes', {
     'defaultMap': 'chiwo.geid1fd8',
     'morningMap': 'chiwo.h78l0k1o',
@@ -14,12 +15,12 @@ angular.module('withlove.admin', [
     'eveningMap': 'chiwo.h78k8i58',
     'nightMap': 'chiwo.geg7cd6d'
 })
-.config(function($routeProvider, $httpProvider, RestangularProvider) {
+.config(function($routeProvider, $httpProvider, baseUrl, RestangularProvider) {
 
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-    RestangularProvider.setBaseUrl('http://api.withlove.phi/');
+    RestangularProvider.setBaseUrl(baseUrl);
 
     $routeProvider
         .when('/', {

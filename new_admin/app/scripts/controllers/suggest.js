@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('SuggestCtrl', function($scope, $routeParams, $modal, $http, mapTypes, suggestPlaces, categories) {
+    .controller('SuggestCtrl', function($scope, $routeParams, $modal, $http, mapTypes, baseUrl, suggestPlaces, categories) {
 
         $scope.suggestPlaces = suggestPlaces;
         $scope.categories = categories;
@@ -114,7 +114,7 @@ angular.module('withlove.admin')
             if (place.original !== null) {
                 place.category = place.category.id;
                 // TODO - change to restangular
-                var suggest_approve = $http.put('http://api.withlove.phi/place/' + place.original.id, place);
+                var suggest_approve = $http.put(baseUrl + '/place/' + place.original.id, place);
             } else {
                 var suggest_approve = place.post(place);
             }
