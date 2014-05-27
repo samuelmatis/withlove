@@ -177,9 +177,9 @@ nav:after {
 .box .top-line .address-box .edit,.edit-box .top-line .address-box .edit {
     width: 55px;
     height: 50px;
-    background: url(../images/edit_icon.png);
-    background-repeat: no-repeat;
-    background-position: center;
+    padding-left: 20px;
+    padding-top: 1px;
+    color: white;
     background-color: #787878;
     display: block;
     float: right;
@@ -188,9 +188,9 @@ nav:after {
 .box .top-line .address-box .approve,.edit-box .top-line .address-box .approve {
     width: 55px;
     height: 50px;
-    background: url(../images/approve.png);
-    background-repeat: no-repeat;
-    background-position: center;
+    padding-left: 20px;
+    padding-top: 1px;
+    color: white;
     background-color: #80bcae;
     display: block;
     float: right;
@@ -199,9 +199,9 @@ nav:after {
 .box .top-line .address-box .remove,.edit-box .top-line .address-box .remove {
     width: 55px;
     height: 50px;
-    background: url(../images/remove_icon.png);
-    background-repeat: no-repeat;
-    background-position: center;
+    padding-left: 20px;
+    padding-top: 1px;
+    color: white;
     background-color: #e07366;
     display: block;
     float: right;
@@ -210,9 +210,9 @@ nav:after {
 .box .top-line .address-box .map,.edit-box .top-line .address-box .map {
     width: 55px;
     height: 50px;
-    background: url(../images/map_icon.png);
-    background-repeat: no-repeat;
-    background-position: center;
+    padding-left: 20px;
+    padding-top: 1px;
+    color: white;
     background-color: #575757;
     display: block;
     float: right;
