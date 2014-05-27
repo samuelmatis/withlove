@@ -2,12 +2,11 @@
 
 angular.module('withlove.admin', [
     'ngCookies',
-    'ngResource',
+    'restangular',
     'ngSanitize',
     'ngRoute',
     'ui.bootstrap'
 ])
-.constant('baseUrl', 'api/')
 .constant('mapTypes', {
     'defaultMap': 'chiwo.geid1fd8',
     'morningMap': 'chiwo.h78l0k1o',
@@ -15,10 +14,12 @@ angular.module('withlove.admin', [
     'eveningMap': 'chiwo.h78k8i58',
     'nightMap': 'chiwo.geg7cd6d'
 })
-.config(function($routeProvider, $httpProvider) {
+.config(function($routeProvider, $httpProvider, RestangularProvider) {
 
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    RestangularProvider.setBaseUrl('http://api.withlove.phi/');
 
     $routeProvider
         .when('/', {
@@ -27,7 +28,7 @@ angular.module('withlove.admin', [
             authenticate: true,
             resolve: {
                 places: function(placesService) {
-                    return placesService.getPlaces();
+                    return placesService.getList();
                 }
             }
         })
@@ -37,10 +38,10 @@ angular.module('withlove.admin', [
             authenticate: true,
             resolve: {
                 place: function(placesService, $route) {
-                    return placesService.getPlace($route.current.params.placeId);
+                    return placesService.one($route.current.params.placeId).get();
                 },
                 categories: function(categoriesService) {
-                    return categoriesService.getCategories();
+                    return categoriesService.getList();
                 }
             }
         })
@@ -50,7 +51,7 @@ angular.module('withlove.admin', [
             authenticate: true,
             resolve: {
                 categories: function(categoriesService) {
-                    return categoriesService.getCategories();
+                    return categoriesService.getList();
                 }
             }
         })
@@ -59,11 +60,11 @@ angular.module('withlove.admin', [
             controller: 'SuggestCtrl',
             authenticate: true,
             resolve: {
-                suggestPlaces: function(placesService) {
-                    return placesService.getSuggestPlaces();
+                suggestPlaces: function(suggestPlacesService) {
+                    return suggestPlacesService.getList();
                 },
                 categories: function(categoriesService) {
-                    return categoriesService.getCategories();
+                    return categoriesService.getList();
                 }
             }
         })

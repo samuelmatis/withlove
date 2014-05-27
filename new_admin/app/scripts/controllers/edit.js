@@ -1,18 +1,15 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('EditCtrl', function($scope, $location, $modal, placesService, place, categories) {
+    .controller('EditCtrl', function($scope, $location, $modal, place, categories) {
 
-        $scope.editPlace = [];
-        $scope.categories = [];
         $scope.form = {};
 
-        $scope.editPlace = place.data;
+        $scope.editPlace = place;
         $scope.editPlace.selectedCategory = $scope.editPlace.category.id;
 
         $scope.categories = categories;
         $scope.selectedCategory = $scope.categories[0];
-
 
         $scope.redirectHome = function() {
             $location.path('/');
@@ -24,7 +21,7 @@ angular.module('withlove.admin')
 
             if(place.category !== '') {
 
-                placesService.editPlace(place).then(function() {
+                $scope.editPlace.put().then(function() {
                     $modal.open({
                         templateUrl: 'views/successModal.html',
                         controller: 'ModalInstanceCtrl',

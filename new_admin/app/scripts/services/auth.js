@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .service('authService', function($cookieStore, $http, $q, $location, baseUrl) {
+    .service('authService', function($cookieStore, $http, $q, $location) {
 
         var userApiKey = $cookieStore.get('user') || '';
         var user = {
@@ -16,7 +16,8 @@ angular.module('withlove.admin')
                 key = userApiKey;
             }
 
-            return $http.post(baseUrl + 'user/login', {email: email, password: password})
+            // TODO: change to restangular
+            return $http.post('http://api.withlove.phi/user/login', {email: email, password: password})
                 .then(function(result) {
 
                     var apiKey = result.data.api_token;

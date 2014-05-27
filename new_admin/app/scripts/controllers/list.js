@@ -6,6 +6,6 @@ angular.module('withlove.admin')
         $scope.places = [];
         $scope.nameFilter = '';
 
-        $scope.places = places.data;
+        $scope.places = places;
 
     });

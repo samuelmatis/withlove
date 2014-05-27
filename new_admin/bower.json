@@ -11,6 +11,8 @@
     "angular-cookies": "1.2.15",
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
-    "leaflet.markercluster": "~0.4.0"
+    "leaflet.markercluster": "~0.4.0",
+    "restangular": "~1.4.0",
+    "lodash": "~2.4.1"
   }
 }

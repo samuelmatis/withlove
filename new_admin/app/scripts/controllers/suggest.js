@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('withlove.admin')
-    .controller('SuggestCtrl', function($scope, $routeParams, $modal, mapTypes, placesService, suggestPlaces, categories) {
+    .controller('SuggestCtrl', function($scope, $routeParams, $modal, $http, mapTypes, suggestPlaces, categories) {
 
-        $scope.suggestPlaces = suggestPlaces.data;
-        $scope.categories = categories.data;
+        $scope.suggestPlaces = suggestPlaces;
+        $scope.categories = categories;
 
         var mapboxStyle = mapTypes.nightMap;
         var lastOpenPopupName;
@@ -86,7 +86,7 @@ angular.module('withlove.admin')
             });
 
             modalInstance.result.then(function(place) {
-                placesService.deleteSuggestPlace(place.id).then(function(result) {
+                place.remove(place.id).then(function(result) {
                     if(result.status === 200) {
                         var index = $scope.suggest_places.indexOf(place);
 
@@ -99,7 +99,7 @@ angular.module('withlove.admin')
         };
 
         $scope.removeSuggestion = function (place) {
-            placesService.deleteSuggestPlace(place.id).then(function(result) {
+            place.remove(place.id).then(function(result) {
                 if(result.status === 200) {
                     angular.forEach($scope.suggest_places, function(value, key){
                         if( value.id === place.id) {
@@ -113,9 +113,10 @@ angular.module('withlove.admin')
         $scope.approveSuggestion = function (place) {
             if (place.original !== null) {
                 place.category = place.category.id;
-                var suggest_approve = placesService.approveSuggestPlace(place);
+                // TODO - change to restangular
+                var suggest_approve = $http.put('http://api.withlove.phi/place/' + place.original.id, place);
             } else {
-                var suggest_approve = placesService.addSuggestPlace(place);
+                var suggest_approve = place.post(place);
             }
 
             suggest_approve.then(function(p) {
