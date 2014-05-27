@@ -2,7 +2,7 @@
 
 angular.module('withlove.admin')
     .directive('suggestMap', function() {
-        return function(scope, element, attrs) {
+        return function(scope, element) {
             element.find('.map').click(function(e) {
                 scope.clearMap();
                 scope.populateMap(scope.place);

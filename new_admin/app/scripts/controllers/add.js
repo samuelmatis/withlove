@@ -24,7 +24,7 @@ angular.module('withlove.admin')
                                 return {
                                     title: 'PRIDANIE MIESTA',
                                     text: 'Pridanie miesta prebehlo úspešne.'
-                                }
+                                };
                             }
 
                         }
@@ -41,7 +41,7 @@ angular.module('withlove.admin')
                                 return {
                                     title: 'PRIDANIE MIESTA',
                                     text: 'Pridanie miesta sa nepodarilo.'
-                                }
+                                };
                             }
 
                         }

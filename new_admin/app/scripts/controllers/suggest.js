@@ -21,7 +21,6 @@ angular.module('withlove.admin')
             showCoverageOnHover: false,
             zoomToBoundsOnClick: false
         });
-        var lastOpenPopupName;
 
 
         $scope.map.addLayer(markers);
@@ -36,8 +35,8 @@ angular.module('withlove.admin')
             var item = place;
             var index, iconPin;
             if (place.category.length > 0) {
-                index = $scope.filters.indexOf(category[0].name);
-                iconPin = category[0].icon_pin;
+                index = $scope.filters.indexOf(place.category[0].name);
+                iconPin = place.category[0].icon_pin;
             } else {
                 index = -1;
                 iconPin = 'http://api.withlove.sk/images/pins/startup.png';
@@ -79,19 +78,18 @@ angular.module('withlove.admin')
                         return {
                             place: place,
                             text: 'suggestion for '
-                        }
+                        };
                     }
-
                 }
             });
 
             modalInstance.result.then(function(place) {
                 place.remove(place.id).then(function(result) {
                     if(result.status === 200) {
-                        var index = $scope.suggest_places.indexOf(place);
+                        var index = $scope.suggestPlaces.indexOf(place);
 
                         if (index > -1) {
-                            $scope.suggest_places.splice(index, 1);
+                            $scope.suggestPlaces.splice(index, 1);
                         }
                     }
                 });
@@ -101,9 +99,9 @@ angular.module('withlove.admin')
         $scope.removeSuggestion = function (place) {
             place.remove(place.id).then(function(result) {
                 if(result.status === 200) {
-                    angular.forEach($scope.suggest_places, function(value, key){
+                    angular.forEach($scope.suggestPlaces, function(value, key){
                         if( value.id === place.id) {
-                            $scope.suggest_places.splice(key, 1);
+                            $scope.suggestPlaces.splice(key, 1);
                         }
                     });
                 }
@@ -111,16 +109,18 @@ angular.module('withlove.admin')
         };
 
         $scope.approveSuggestion = function (place) {
+            var suggest_approve;
+
             if (place.original !== null) {
                 place.category = place.category.id;
                 // TODO - change to restangular
-                var suggest_approve = $http.put(baseUrl + '/place/' + place.original.id, place);
+                suggest_approve = $http.put(baseUrl + '/place/' + place.original.id, place);
             } else {
-                var suggest_approve = place.post(place);
+                suggest_approve = place.post(place);
             }
 
-            suggest_approve.then(function(p) {
-                if(p.status == 200) {
+            suggest_approve.then(function(response) {
+                if(response.status === 200) {
                     $scope.removeSuggestion(place);
                 }
             });
