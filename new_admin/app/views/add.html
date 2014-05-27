@@ -1,10 +1,16 @@
 <div id="main-wrapper">
     <div>
-        <div add-place-directive class="edit-box">
+        <div select-stairs class="edit-box">
 
             <form name="addPlaceForm">
                 <div class="category-picker">
-                    <select-stairs name="category" stairs="categories" defaultoption="selectedCategory" ng-model="form.category" required></select-stairs>
+
+                    <div ng-repeat="category in categories" class="category {{category.slug}}" data-category="{{category.slug}}" data-category-id="{{category.id}}">
+                        <div class="category-inside">
+                            {{category.name}}
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="top-line">
