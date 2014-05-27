@@ -3,7 +3,6 @@
 angular.module('withlove.admin', [
     'ngCookies',
     'restangular',
-    'ngSanitize',
     'ngRoute',
     'ui.bootstrap'
 ])
