@@ -8,8 +8,4 @@ angular.module('withloveApp')
         categoriesPromise.then(function(categories) {
             $scope.categories = categories.data;
         });
-
-        $scope.filterCategory = function(name, event) {
-            $rootScope.$emit('filterCategory', name, event);
-        };
     });

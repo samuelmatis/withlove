@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withloveApp')
-    .directive('appMenu', function() {
+    .directive('appMenu', function($rootScope) {
         return {
             templateUrl: 'views/navigation.tpl.html',
             replace: true,
