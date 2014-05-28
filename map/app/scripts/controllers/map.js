@@ -37,8 +37,8 @@ angular.module('withloveApp')
         var lastOpenPopupName;
 
         // Get places from API
-        placesService.getPlaces().then(function(places) {
-            $scope.places = places.data;
+        placesService.getList().then(function(places) {
+            $scope.places = places;
 
             // Create new instance of FuseSearcher
             var options = {
