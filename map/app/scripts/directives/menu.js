@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withloveApp')
-    .directive('appMenu', function() {
+    .directive('appMenu', function($rootScope) {
         return {
             templateUrl: 'views/navigation.tpl.html',
             replace: true,
@@ -18,6 +18,17 @@ angular.module('withloveApp')
                         width: '116px'
                     }, 200);
                 });
+
+                scope.filterCategory = function(event) {
+                    var elements = angular.element('.category-marker');
+                    var selectedElement = event.target;
+                    $rootScope.$emit('filterCategory', elements, selectedElement);
+                };
+
+                scope.filterAllCategories = function() {
+                    var elements = angular.element('.category-marker');
+                    $rootScope.$emit('filterAllCategories', elements);
+                };
             }
         };
     });

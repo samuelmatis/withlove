@@ -7,27 +7,41 @@ angular.module('withloveApp')
             replace: true,
             controller: 'MapCtrl',
             link: function(scope, element, attrs) {
-                $rootScope.$on('filterCategory', function(ev, name, event) {
-                    // Toggle navigation filter button state
-                    var myElement = angular.element(event.target);
+                $rootScope.$on('filterAllCategories', function(event, elements) {
+                    scope.filters = [];
 
-                    if(myElement.hasClass('active')) {
-                        // Setting a filter
-                        scope.filters.push(name);
-                        myElement.removeClass('active');
-                        myElement.addClass('inactive');
-                    } else {
-                        // Unsetting the filter
-                        var index = scope.filters.indexOf(name);
-                        if (index > -1) {
-                            scope.filters.splice(index, 1);
-                        }
-                        myElement.removeClass('inactive');
-                        myElement.addClass('active');
-                    }
+                    angular.forEach(elements, function(element) {
+                        var element = angular.element(element);
+                        element.removeClass('inactive');
+                        element.addClass('active');
+                    });
 
                     scope.search();
+                });
 
+                $rootScope.$on('filterCategory', function(event, elements, selectedElement) {
+                    var excludeElements = _.without(elements, selectedElement);
+                    scope.filters = [];
+
+                    angular.forEach(excludeElements, function(excludedElement) {
+                        var element = angular.element(excludedElement);
+
+                        element.removeClass('active');
+                        element.addClass('inactive');
+
+                        console.log(element);
+                        scope.filters.push(element.context.text);
+                    });
+
+                    var selectedElement = angular.element(selectedElement);
+                    var index = scope.filters.indexOf(selectedElement.context.text);
+                    if (index > -1) {
+                        scope.filters.splice(index, 1);
+                    }
+                    selectedElement.removeClass('inactive');
+                    selectedElement.addClass('active');
+
+                    scope.search();
                 });
             }
         };

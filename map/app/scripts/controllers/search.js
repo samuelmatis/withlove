@@ -7,15 +7,15 @@ angular.module('withloveApp')
         $scope.selectedCategory = $scope.defaultCategory;
         $scope.categories = [];
 
-        var categoriesPromise = categoriesService.getCategories();
+        var categoriesPromise = categoriesService.getList();
         categoriesPromise.then(function(categories) {
-            $scope.categories = categories.data;
-            console.log($scope.categories);
+            $scope.categories = categories;
         });
 
         $scope.showAddPlaceForm = function(){
             $scope.form.name = $scope.query;
             $scope.addPlaceFormVisible = true;
+            $scope.editAction = false;
         };
 
         $scope.cancelAddPlaceForm = function(){
@@ -46,8 +46,9 @@ angular.module('withloveApp')
                 }
 
                 $scope.addPlaceFormDisable();
+                $scope.form.category = $scope.selectedCategory.id;
 
-                var addPlacePromise = placesService.insertPlace($scope.form);
+                var addPlacePromise = placesService.post($scope.form)
                 addPlacePromise.then(function() {
                     $modal.open({
                         templateUrl: 'views/successModalMessage.tpl.html',
@@ -79,24 +80,28 @@ angular.module('withloveApp')
                     $scope.addPlaceFormBlock();
                 });
             } else {
-                $scope.selected_category = $scope.defaultCategory;
+                $scope.selectedCategory = $scope.defaultCategory;
 
             }
         };
 
         $scope.saveEditData = function(){
 
-            $scope.addPlaceFormDisable();
-
             if($scope.form.web.indexOf('http') < 0) {
                 $scope.form.web = 'http://' + $scope.form.web;
             }
 
-            var editPlacePromise = placesService.editPlace($scope.form);
 
-            editPlacePromise.then(function() {
+            placesService.one($scope.form.id).get().then(function(place) {
+                $scope.addPlaceFormDisable();
+
+                $scope.form = place;
+                place.category = $scope.selectedCategory.id;
+
+                var placePutPromise = place.put();
+                placePutPromise.then(function() {
                     $modal.open({
-                        templateUrl: 'views/errorModalMessage.tpl.html',
+                        templateUrl: 'views/successModalMessage.tpl.html',
                         controller: 'ModalInstanceCtrl',
                         resolve: {
                             data: function(){
@@ -126,9 +131,10 @@ angular.module('withloveApp')
 
                     $scope.addPlaceFormBlock();
                 });
+            });
         };
 
-        $scope.editItem = function(current){
+        $scope.editItem = function(current) {
             $scope.selectedCategory = current.category;
             $scope.form.id = current.id;
             $scope.form.name = current.name;

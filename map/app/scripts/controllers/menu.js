@@ -4,12 +4,8 @@ angular.module('withloveApp')
     .controller('MenuCtrl', function($scope, $rootScope, categoriesService) {
         $scope.categories = [];
 
-        var categoriesPromise = categoriesService.getCategories();
+        var categoriesPromise = categoriesService.getList();
         categoriesPromise.then(function(categories) {
-            $scope.categories = categories.data;
+            $scope.categories = categories;
         });
-
-        $scope.filterCategory = function(name, event) {
-            $rootScope.$emit('filterCategory', name, event);
-        };
     });

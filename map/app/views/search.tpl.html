@@ -11,15 +11,17 @@
            ng-style="{'background-image':'url('+place.category.icon_normal+')','background-position':'0px 2px','background-color':place.category.color,'background-repeat':'no-repeat'}">
             {{place.name}}
         </a>
-        <div ng-show="query" class="search-hint">Not here? Add your place now:</div>
-        <a ng-show="query" href="#" class="add-place-button" ng-click="showAddPlaceForm()">ADD YOUR PLACE</a>
+        <a class="add-place-button" ng-show="query" ng-click="showAddPlaceForm()">
+            <div class="search-hint">Not here? Add your place now:</div>
+            <div class="add-place-button">ADD YOUR PLACE</div>
+        </a>
     </div>
 
     <div ng-show="addPlaceFormVisible" id="addplaceform-wrapper">
         <form name="addPlaceForm" novalidate>
             <div>
                 <div class="addplaceform-datarow">
-                    <select-stairs name="category" stairs="categories" defaultoption="selected_category" ng-model="form.category" required></select-stairs>
+                    <select-stairs name="category" stairs="categories" defaultoption="selectedCategory" ng-model="form.category" required></select-stairs>
                 </div>
 
                 <div class="addplaceform-datarow">
@@ -67,7 +69,7 @@
             </div>
             <button class="addplaceform-addbutton" ng-show="!editAction" ng-click="saveNewPlace()"><img src="images/button-loader.gif" style="display: none;"><span>ADD THIS PLACE</span></button>
             <button class="addplaceform-editbutton" ng-show="editAction" ng-click="saveEditData()"><img src="images/button-loader.gif" style="display: none;"><span>EDIT THIS PLACE</span></button>
-            <a href="#" class="addplaceform-cancelbutton" ng-click="cancelAddPlaceForm()">or CANCEL, I changed my mind.</a>
+            <button class="addplaceform-cancelbutton" ng-click="cancelAddPlaceForm()"><span>or CANCEL, I changed my mind.</span></button>
         </form>
     </div>
 </div>

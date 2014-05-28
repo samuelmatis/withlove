@@ -9,6 +9,19 @@ angular.module('withloveApp')
         // Map style
         var mapboxStyle = mapTypes.nightMap;
 
+        var dateObject = new Date();
+        var hours = dateObject.getHours();
+
+        if (hours >= 5 && hours < 9) {
+            mapboxStyle = mapTypes.morningMap;
+        } else if (hours >= 9 && hours < 18) {
+            mapboxStyle = mapTypes.dayMap;
+        } else if (hours >= 18 && hours < 20) {
+            mapboxStyle = mapTypes.eveningMap;
+        } else if (hours < 5 || hours >= 20) {
+            mapboxStyle = mapTypes.nightMap;
+        }
+
         // Main map instance
         var map = L.mapbox.map('map', mapboxStyle, { minZoom: 8 }).setView([48.6805720,19.9428910], 8);
 
@@ -24,8 +37,8 @@ angular.module('withloveApp')
         var lastOpenPopupName;
 
         // Get places from API
-        placesService.getPlaces().then(function(places) {
-            $scope.places = places.data;
+        placesService.getList().then(function(places) {
+            $scope.places = places;
 
             // Create new instance of FuseSearcher
             var options = {
