@@ -21,15 +21,17 @@ angular.module('withloveApp')
                 });
 
                 scope.addPlaceFormDisable = function() {
-                    angular.element('.addplaceform-addbutton').attr('disabled', 'disabled');
-                    angular.element('.addplaceform-addbutton img').attr('display', 'block');
-                    angular.element('.addplaceform-addbutton span').attr('display', 'none');
+                    angular.element('.addplaceform-addbutton, .addplaceform-editbutton, .addplaceform-cancelbutton').attr({
+                        'disabled': 'disabled',
+                        'display': 'none'
+                    });
                 }
 
                 scope.addPlaceFormBlock = function() {
-                    angular.element('.addplaceform-addbutton').removeAttr('disabled');
-                    angular.element('.addplaceform-addbutton img').attr('display', 'none');
-                    angular.element('.addplaceform-addbutton span').attr('display', 'inline-block');
+                    angular.element('.addplaceform-addbutton, .addplaceform-editbutton, .addplaceform-cancelbutton').removeAttr('disabled');
+                    angular.element('.addplaceform-addbutton, .addplaceform-editbutton, .addplaceform-cancelbutton img').attr({
+                        'display': 'inline-block'
+                    });
                 }
             }
         };

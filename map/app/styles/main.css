@@ -84,7 +84,7 @@ form {
     display: block;
     width: 280px;
     padding-left: 85px;
-    line-height: 55px;
+    line-height: 53px;
     outline: none;
 }
 
@@ -226,7 +226,7 @@ textarea.addplaceform-textarea {
     background-color: white;
 }
 
-.addplaceform-addbutton, .addplaceform-editbutton {
+.addplaceform-addbutton, .addplaceform-editbutton, .addplaceform-cancelbutton {
     border: 0 none;
     font-family: Roboto;
     display: block;
@@ -243,25 +243,16 @@ textarea.addplaceform-textarea {
     text-align: center;
 }
 
+.addplaceform-cancelbutton {
+    background-color: #FD5050;
+}
 
-.addplaceform-addbutton:disabled, .addplaceform-editbutton:disabled {
+.addplaceform-addbutton:disabled, .addplaceform-editbutton:disabled, .addplaceform-cancelbutton:disabled {
     background-color: #999999;
 }
 
-.addplaceform-addbutton:disabled:hover, .addplaceform-editbutton:disabled:hover {
+.addplaceform-addbutton:disabled:hover, .addplaceform-editbutton:disabled:hover, .addplaceform-cancelbutton:hover {
     cursor: default;
-}
-
-.addplaceform-cancelbutton {
-    display: block;
-    width: 300px;
-    margin-top: 10px;
-    background-color: transparent;
-    padding: 0;
-    text-align: center;
-    font-family: Roboto, sans-serif;
-    font-size: 14px;
-    text-decoration: none;
 }
 
 .autocomplete-place:hover, .autocomplete-place:active, .autocomplete-place:visited,
@@ -368,6 +359,7 @@ textarea.addplaceform-textarea {
 }
 
 .add-place-button {
+    color: white;
     background-color: #80bcae;
     padding: 0;
     text-align: center;
@@ -389,8 +381,8 @@ textarea.addplaceform-textarea {
 
 .category-marker {
     display: block;
-    width: 54px;
-    height: 54px;
+    width: 53px;
+    height: 53px;
     background-repeat: no-repeat;
 }
 
@@ -602,7 +594,7 @@ h2 {
 
 .search-hint {
     width: 300px;
-    height: 55px;
+    height: 35px;
     text-align: center;
     line-height: 55px;
     font-size: 14px;
@@ -610,10 +602,6 @@ h2 {
 }
 
 /******************* NIGHT TEMPLATE ********************/
-.night-template .search-hint {
-    color: #a2a2a3;
-}
-
 .night-template .addplaceform-cancelbutton,
 .night-template .addplaceform-cancelbutton:hover,
 .night-template .addplaceform-cancelbutton:active,
@@ -623,10 +611,6 @@ h2 {
 }
 
 /******************* NIGHT TEMPLATE ********************/
-.day-template .search-hint {
-    color: #333333;
-}
-
 .day-template .addplaceform-cancelbutton,
 .day-template .addplaceform-cancelbutton:hover,
 .day-template .addplaceform-cancelbutton:active,
