@@ -14,7 +14,9 @@ angular.module('withloveApp', [
     'eveningMap': 'chiwo.h78k8i58',
     'nightMap': 'chiwo.geg7cd6d'
 })
-
-.run(function($http, apiKey) {
+.config(function(RestangularProvider, baseUrl) {
+    RestangularProvider.setBaseUrl(baseUrl);
+})
+.run(function($http, baseUrl, apiKey) {
     $http.defaults.headers.common.Authorization = apiKey;
 });
