@@ -22,7 +22,7 @@
         {
             "name": "Michal Vavák",
             "email": "vavak@phirational.com"
-        },
+        }
     ],
     "version": "0.1.3",
     "dependencies": {},
