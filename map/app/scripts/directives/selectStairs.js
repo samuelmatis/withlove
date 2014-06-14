@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withloveApp')
-    .directive('selectStairs', function () {
+    .directive('selectStairs', function() {
         return {
             restrict: 'AE',
             templateUrl: 'views/selectbox.tpl.html',
@@ -12,7 +12,7 @@ angular.module('withloveApp')
                 defaultOption: '=defaultoption',
                 selectboxValue: '=ngModel'
             },
-            link: function (scope, element, attrs) {
+            link: function() {
 
                angular.element('.selected-category').click(function() {
                     var category = angular.element(this).attr('data-category');

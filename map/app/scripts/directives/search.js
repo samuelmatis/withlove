@@ -118,14 +118,14 @@ angular.module('withloveApp')
                         'disabled': 'disabled',
                         'display': 'none'
                     });
-                }
+                };
 
                 scope.addPlaceFormBlock = function() {
                     angular.element('.addplaceform-addbutton, .addplaceform-editbutton, .addplaceform-cancelbutton').removeAttr('disabled');
                     angular.element('.addplaceform-addbutton, .addplaceform-editbutton, .addplaceform-cancelbutton img').attr({
                         'display': 'inline-block'
                     });
-                }
+                };
             }
         };
     });
