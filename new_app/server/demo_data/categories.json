@@ -1,0 +1,74 @@
+[
+  {
+    "id": "5",
+    "name": "Incubator",
+    "canHasChildren": "1",
+    "color": "#f4c910",
+    "iconNormal": "http://api.withlove.sk/images/icons/startup.png",
+    "iconPin": "http://api.withlove.sk/images/pins/startup.png",
+    "slug": "accelerator",
+    "order": "1",
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "2",
+    "name": "Service Provider",
+    "canHasChildren": "0",
+    "color": "#f87466",
+    "iconNormal": "http://api.withlove.sk/images/icons/service_provider.png",
+    "iconPin": "http://api.withlove.sk/images/pins/service_provider.png",
+    "slug": "service-provider",
+    "order": "2",
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "4",
+    "name": "Community",
+    "canHasChildren": "0",
+    "color": "#de4a62",
+    "iconNormal": "http://api.withlove.sk/images/icons/comunity.png",
+    "iconPin": "http://api.withlove.sk//images//pins//comunity.png",
+    "slug": "comunity",
+    "order": "3",
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "3",
+    "name": "Coworking",
+    "canHasChildren": "1",
+    "color": "#737a93",
+    "iconNormal": "http://api.withlove.sk/images/icons/coworking.png",
+    "iconPin": "http://api.withlove.sk/images/pins/coworking.png",
+    "slug": "coworking",
+    "order": "4",
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "6",
+    "name": "Angel Investor",
+    "canHasChildren": "0",
+    "color": "#44b7d7",
+    "iconNormal": "http://api.withlove.sk/images/icons/angel_investor.png",
+    "iconPin": "http://api.withlove.sk//images//pins//angel_investor.png",
+    "slug": "angel-investor",
+    "order": "5",
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": 1,
+    "name": "Startup",
+    "canHasChildren": "0",
+    "color": "#5fb8aa",
+    "iconNormal": "http://api.withlove.sk/images/icons/accelerator.png",
+    "iconPin": "http://api.withlove.sk//images//pins//accelerator.png",
+    "slug": "startup",
+    "order": "6",
+    "createdAt": null,
+    "updatedAt": null
+  }
+]
