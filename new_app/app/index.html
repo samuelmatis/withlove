@@ -49,20 +49,18 @@
     <link rel="stylesheet" type="text/css" href="http://api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.css">
 
     <!-- build:css styles/styles.css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/selectbox.css">
+    <link ng-hide="is('admin')" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link ng-hide="is('admin')" rel="stylesheet" href="styles/map/main.css">
+    <link ng-hide="is('admin')" rel="stylesheet" href="styles/map/selectbox.css">
+    <link ng-show="is('admin')" rel="stylesheet" href="styles/admin/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="withloveApp" class="night-template">
+<body ng-app="withlove" class="night-template">
     <!--[if lt IE 8]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div app-about-overlay=""></div>
-    <div app-menu=""></div>
-    <div app-search=""></div>
-    <div app-map=""></div>
+    <div ng-view=""></div>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -89,6 +87,7 @@
     <!-- build:js scripts/scripts.js -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="scripts/vendor/ui-bootstrap-custom-tpls-0.10.0.js"></script>
     <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
@@ -96,19 +95,39 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/map.js"></script>
-    <script src="scripts/controllers/menu.js"></script>
-    <script src="scripts/controllers/search.js"></script>
-    <script src="scripts/controllers/modalInstance.js"></script>
-    <script src="scripts/directives/map.js"></script>
-    <script src="scripts/directives/menu.js"></script>
-    <script src="scripts/directives/search.js"></script>
-    <script src="scripts/directives/aboutOverlay.js"></script>
-    <script src="scripts/directives/selectStairs.js"></script>
-    <script src="scripts/services/map.js"></script>
-    <script src="scripts/services/categories.js"></script>
-    <script src="scripts/services/places.js"></script>
-    <script src="scripts/filters/placesFuseSearch.js"></script>
+    <script src="scripts/params.js"></script>
+    <script src="scripts/_shared/_module.js"></script>
+    <script src="scripts/map/_module.js"></script>
+    <script src="scripts/admin/_module.js"></script>
+    <script src="scripts/_shared/directives/head.js"></script>
+    <script src="scripts/map/controllers/map.js"></script>
+    <script src="scripts/map/controllers/menu.js"></script>
+    <script src="scripts/map/controllers/search.js"></script>
+    <script src="scripts/map/controllers/modalInstance.js"></script>
+    <script src="scripts/map/directives/map.js"></script>
+    <script src="scripts/map/directives/menu.js"></script>
+    <script src="scripts/map/directives/search.js"></script>
+    <script src="scripts/map/directives/aboutOverlay.js"></script>
+    <script src="scripts/map/directives/selectStairs.js"></script>
+    <script src="scripts/map/services/map.js"></script>
+    <script src="scripts/map/services/categories.js"></script>
+    <script src="scripts/map/services/places.js"></script>
+    <script src="scripts/map/filters/placesFuseSearch.js"></script>
+    <script src="scripts/admin/controllers/login.js"></script>
+    <script src="scripts/admin/controllers/header.js"></script>
+    <script src="scripts/admin/controllers/list.js"></script>
+    <script src="scripts/admin/controllers/edit.js"></script>
+    <script src="scripts/admin/controllers/add.js"></script>
+    <script src="scripts/admin/controllers/suggest.js"></script>
+    <script src="scripts/admin/controllers/modalInstance.js"></script>
+    <script src="scripts/admin/controllers/dialogInstance.js"></script>
+    <script src="scripts/admin/directives/header.js"></script>
+    <script src="scripts/admin/directives/selectStairs.js"></script>
+    <script src="scripts/admin/directives/suggestMap.js"></script>
+    <script src="scripts/admin/services/auth.js"></script>
+    <script src="scripts/admin/services/categories.js"></script>
+    <script src="scripts/admin/services/places.js"></script>
+    <script src="scripts/admin/services/placesSuggest.js"></script>
     <!-- endbuild -->
 </body>
 </html>
