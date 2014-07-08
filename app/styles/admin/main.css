@@ -8,7 +8,7 @@
     margin: 0 auto;
     border: 10px solid #232326;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .admin-page nav ul {
@@ -73,6 +73,23 @@
 
 .admin-page nav li .review.active {
     border-bottom: 5px solid #edce33;
+}
+
+.second-nav {
+    border: 0px !important;
+    margin-top: 0px !important;
+}
+
+.admin-page .second-nav li .download-data {
+    margin-left: 300px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background: #3887BE;
+    border-bottom: 5px solid #0061A5;
+}
+
+.admin-page .second-nav li .download-data.active {
+    border-bottom: 5px solid #3887BE;
 }
 
 .admin-page nav:after {

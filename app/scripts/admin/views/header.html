@@ -1,7 +1,15 @@
-<nav ng-hide="isActive('/login')">
-    <ul>
-        <li><a href="#/admin" class="list" ng-class="{active: isActive('/admin')}">List places</a></li>
-        <li><a href="#/admin/add" class="add-place" ng-class="{active: isActive('/admin/add')}">Add a new place</a></li>
-        <li><a href="#/admin/suggest" class="review" ng-class="{active: isActive('/admin/suggest')}">Review suggestions</a></li>
-    </ul>
-</nav>
+<div ng-hide="isActive('/login')">
+    <nav>
+        <ul>
+            <li><a href="#/admin" class="list" ng-class="{active: isActive('/admin')}">List places</a></li>
+            <li><a href="#/admin/add" class="add-place" ng-class="{active: isActive('/admin/add')}">Add a new place</a></li>
+            <li><a href="#/admin/suggest" class="review" ng-class="{active: isActive('/admin/suggest')}">Review suggestions</a></li>
+        </ul>
+    </nav>
+
+    <nav class="second-nav">
+        <ul>
+            <li><a href="/api/download" class="download-data" ng-class="{active: isActive('/admin/suggest')}">Download data</a></li>
+        </ul>
+    </nav>
+</div>
