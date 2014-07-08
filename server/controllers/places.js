@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Place = mongoose.model('Place'),
     Category = mongoose.model('Category'),
     geocoder = require('geocoder'),
+    json2csv = require('json2csv'),
     _ = require('lodash');
 
 /**
@@ -112,6 +113,27 @@ exports.remove = function(req, res) {
             } else {
                 return res.send(err);
             }
+        });
+    });
+};
+
+/**
+ * Download data
+ */
+exports.download = function(req, res) {
+    return Place.find().sort(id).exec(function(err, places) {
+        return json2csv({data: places, fields: [
+            'id', 'categoryId', 'name',
+            'description', 'latitude',
+            'longitude', 'email', 'country',
+            'parent', 'phone', 'zip',
+            'street', 'tags', 'town',
+            'web', 'createdAt', 'updatedAt'
+        ]}, function(err, csv) {
+            if (err) res.send(err);
+
+            res.attachment('withlove-data.csv');
+            res.end(csv, 'utf8');
         });
     });
 };

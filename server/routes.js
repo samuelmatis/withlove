@@ -60,6 +60,9 @@ module.exports = function(app) {
     app.post('/login', session.login);
     app.get('/logout', session.logout);
 
+    // Download data
+    app.get('/api/download', middleware.auth, places.download);
+
     // All undefined api routes should return a 404
     app.route('/api/*')
         .get(function(req, res) {
