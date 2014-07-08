@@ -17,7 +17,7 @@ angular.module('withlove.admin')
             }
 
             // TODO: change to restangular
-            return $http.post(baseUrl + '/user/login', {email: email, password: password})
+            return $http.post('/login', {email: email, password: password})
                 .then(function(result) {
 
                     var apiKey = result.data.api_token;
@@ -32,7 +32,8 @@ angular.module('withlove.admin')
 
                     return true;
 
-                }, function() {
+                }, function(err) {
+                    console.log('fail', err);
                     userApiKey = '';
                     return false;
                 });

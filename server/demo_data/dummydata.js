@@ -17,7 +17,7 @@ var usersDataFile = require('./users.json');
 var placesData = JSON.parse(JSON.stringify(placesDataFile));
 var placeSuggestData = JSON.parse(JSON.stringify(placeSuggestDataFile));
 var categoriesData = JSON.parse(JSON.stringify(categoriesDataFile));
-var usersData = JSON.parse(JSON.stringify(categoriesDataFile));
+var usersData = JSON.parse(JSON.stringify(usersDataFile));
 
 Place.find({}).remove(function() {
     Place.create(placesData, function(err, result) {
@@ -28,21 +28,21 @@ Place.find({}).remove(function() {
 
 PlaceSuggest.find({}).remove(function() {
     PlaceSuggest.create(placeSuggestData, function(err, result) {
-        if (err) console.log('Cannot insert places demo data');
+        if (err) console.log('Cannot insert places demo data', err);
         else console.log('Finished populating suggested places');
     });
 });
 
 Category.find({}).remove(function() {
     Category.create(categoriesData, function(err, result) {
-        if (err) console.log('Cannot insert categories demo data');
+        if (err) console.log('Cannot insert categories demo data', err);
         else console.log('Finished populating categories');
     });
 });
 
-// User.find({}).remove(function() {
-//     User.create(usersData, function(err, result) {
-//         if (err) console.log('Cannot insert users demo data', err);
-//         else console.log('Finished populating users');
-//     });
-// });
+User.find({}).remove(function() {
+    User.create(usersData, function(err, result) {
+        if (err) console.log('Cannot insert users demo data', err);
+        else console.log('Finished populating users');
+    });
+});

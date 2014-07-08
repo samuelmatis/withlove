@@ -5,6 +5,7 @@ var places = require('./controllers/places'),
     categories = require('./controllers/categories'),
     users = require('./controllers/users'),
     session = require('./controllers/session'),
+    index = require('./controllers/index'),
     middleware = require('./middleware');
 
 /**
@@ -56,9 +57,8 @@ module.exports = function(app) {
         .get(users.show);
 
     // Session
-    app.route('/api/session')
-        .post(session.login)
-        .delete(session.logout);
+    app.post('/login', session.login);
+    app.get('/logout', session.logout);
 
     // All undefined api routes should return a 404
     app.route('/api/*')
@@ -67,5 +67,5 @@ module.exports = function(app) {
         });
 
     app.route('/*')
-        .get(middleware.setUserCookie);
+        .get(middleware.setUserCookie, index.index);
 };
