@@ -24,7 +24,8 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 // Populate empty DB with sample data
-require('./server/config/dummydata');
+// Uncomment on first start
+// require('./server/config/dummydata');
 
 // Passport Configuration
 var passport = require('./server/config/passport');
