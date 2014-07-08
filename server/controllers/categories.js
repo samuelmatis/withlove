@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
  * Get all categories
  */
 exports.all = function(req, res) {
-    return Category.find(function (err, categories) {
+    return Category.find().sort('order').exec(function (err, categories) {
         if (err) return res.send(err);
 
         return res.json(categories);
