@@ -36,7 +36,7 @@ angular.module('withlove.admin')
             var index, iconPin;
             if (place.category.length > 0) {
                 index = $scope.filters.indexOf(place.category[0].name);
-                iconPin = place.category[0].icon_pin;
+                iconPin = place.category[0].iconPin;
             } else {
                 index = -1;
                 iconPin = 'http://api.withlove.sk/images/pins/startup.png';

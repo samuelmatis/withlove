@@ -8,7 +8,7 @@
             <div class="clearfix"></div>
         </form>
         <a class="autocomplete-place" ng-repeat="place in places | placesFuseSearchStrict:query" ng-click="showPlace(place.latitude, place.longitude)"
-           ng-style="{'background-image':'url('+place.category.icon_normal+')','background-position':'0px 2px','background-color':place.category.color,'background-repeat':'no-repeat'}">
+           ng-style="{'background-image':'url('+place.category.iconNormal+')','background-position':'0px 2px','background-color':place.category.color,'background-repeat':'no-repeat'}">
             {{place.name}}
         </a>
         <a class="add-place-button" ng-show="query" ng-click="showAddPlaceForm()">
