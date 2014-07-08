@@ -16,23 +16,23 @@
                 <div class="top-line">
 
                     <div class="name-box startup" data-category="startup">
-                        <!--<img src="images/default_category.png" class="category-img">-->
+                        <!--<img src="images/admin/default_category.png" class="category-img">-->
                         <input type="text" ng-trim="true" class="edit-input" value="" placeholder="Name" name="name" ng-model="form.name" ng-pattern="/^([a-zA-Z0-9-_:?!.\/ ]{1,25})$/" required ng-blur="clearPlaceSuggest()" ng-focus="showPlaceSuggest()">
-                        <span ng-show="addPlaceForm.name.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
-                        <span ng-hide="addPlaceForm.name.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                        <span ng-show="addPlaceForm.name.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-success.png" /></span>
+                        <span ng-hide="addPlaceForm.name.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-failed.png" /></span>
                     </div>
 
                     <div class="default-inside-box">
                         <input type="text" ng-trim="true" class="edit-input" value="" placeholder="Street" name="street" ng-model="form.street" required>
-                        <span ng-show="addPlaceForm.street.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
-                        <span ng-hide="addPlaceForm.street.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                        <span ng-show="addPlaceForm.street.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-success.png" /></span>
+                        <span ng-hide="addPlaceForm.street.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-failed.png" /></span>
                     </div>
 
                     <div class="default-inside-box undefined">
-                        <img src="images/address.png" class="email-icon">
+                        <img src="images/admin/address.png" class="email-icon">
                         <input type="text" ng-trim="true" class="edit-input" value="" placeholder="Town" name="town" ng-model="form.town" required>
-                        <span ng-show="addPlaceForm.town.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
-                        <span ng-hide="addPlaceForm.town.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                        <span ng-show="addPlaceForm.town.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-success.png" /></span>
+                        <span ng-hide="addPlaceForm.town.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-failed.png" /></span>
                     </div>
 
                 </div>
@@ -40,24 +40,24 @@
                 <div class="top-line">
 
                     <div class="default-inside-box">
-                        <img src="images/web_icon.png" class="web-icon">
+                        <img src="images/admin/web_icon.png" class="web-icon">
                         <input type="text" ng-trim="true" class="edit-input" value="" placeholder="Website" name="web" ng-model="form.web" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/">
-                        <span ng-show="addPlaceForm.web.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
-                        <span ng-hide="addPlaceForm.web.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                        <span ng-show="addPlaceForm.web.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-success.png" /></span>
+                        <span ng-hide="addPlaceForm.web.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-failed.png" /></span>
                     </div>
 
                     <div class="default-inside-box undefined">
-                        <img src="images/email_icon.png" class="email-icon">
+                        <img src="images/admin/email_icon.png" class="email-icon">
                         <input type="text" ng-trim="true" class="edit-input" value="" placeholder="Email" name="email" ng-model="form.email" ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
-                        <span ng-show="addPlaceForm.email.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
-                        <span ng-hide="addPlaceForm.email.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                        <span ng-show="addPlaceForm.email.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-success.png" /></span>
+                        <span ng-hide="addPlaceForm.email.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-failed.png" /></span>
                     </div>
 
                     <div class="default-inside-box">
-                        <img src="images/phone_icon.png" class="phone-icon">
+                        <img src="images/admin/phone_icon.png" class="phone-icon">
                         <input type="text" ng-trim="true" class="edit-input" value="" placeholder="Phone number" name="phone" ng-model="form.phone" ng-pattern="/^(\+?[0-9\-\/\(\) ]{3,24})$/">
-                        <span ng-show="addPlaceForm.phone.$valid" class="addplaceform-validation-wrapper"><img src="images/check-success.png" /></span>
-                        <span ng-hide="addPlaceForm.phone.$valid" class="addplaceform-validation-wrapper"><img src="images/check-failed.png" /></span>
+                        <span ng-show="addPlaceForm.phone.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-success.png" /></span>
+                        <span ng-hide="addPlaceForm.phone.$valid" class="addplaceform-validation-wrapper"><img src="images/admin/check-failed.png" /></span>
                     </div>
 
                 </div>
@@ -73,7 +73,7 @@
 
                     <div class="form-buttons">
                         <input type="submit" name="cancel" value="Cancel" class="cancel" ng-click="redirectHome()"/>
-                        <button class="submit-place" ng-click="addNewForm()"><img src="images/button-loader.gif" style="display: none;"><span>Submit place</span></button>
+                        <button class="submit-place" ng-click="addNewForm()"><img src="images/admin/button-loader.gif" style="display: none;"><span>Submit place</span></button>
                     </div>
 
                 </div>

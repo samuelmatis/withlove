@@ -101,7 +101,7 @@ nav:after {
     border: 0;
     margin-left: 20px;
     padding-left: 30px;
-    background: url(../../images/search_logo.png);
+    background: url(../../images/admin/search_logo.png);
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: left center;
@@ -168,7 +168,7 @@ nav:after {
     float: right;
     background: red;
     width: 61%;
-    background: url(../../images/address_icon.png);
+    background: url(../../images/admin/address_icon.png);
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 30px;
@@ -221,7 +221,7 @@ nav:after {
 }
 
 .box .top-line .address-box .map.active,.edit-box .top-line .address-box .map.active {
-    background: url(../../images/map_icon_active.png);
+    background: url(../../images/admin/map_icon_active.png);
     background-repeat: no-repeat;
     background-position: center;
     background-color: #575757;
@@ -266,7 +266,7 @@ nav:after {
 }
 
 .box .content-box,.edit-box .content-box {
-    background: url(../../images/text_icon.png);
+    background: url(../../images/admin/text_icon.png);
     background-repeat: no-repeat;
     padding-left: 34px;
     margin-left: 17px;

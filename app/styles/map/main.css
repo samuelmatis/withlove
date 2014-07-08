@@ -97,7 +97,7 @@ form {
     width: 42px;
     height: 53px;
     background-color: transparent;
-    background-image: url('../../images/pin-with-number.png');
+    background-image: url('../../images/map/pin-with-number.png');
     background-repeat: no-repeat;
     text-align: center;
     padding-top: 10px;
@@ -352,7 +352,7 @@ textarea.addplaceform-textarea {
 
 .fb {
     display: block;
-    background-image: url('../../images/fb.png');
+    background-image: url('../../images/map/fb.png');
     width: 28px;
     height: 28px;
     background-repeat: no-repeat;
