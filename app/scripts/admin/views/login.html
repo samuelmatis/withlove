@@ -1,17 +1,19 @@
-<link rel="stylesheet" href="/styles/admin/main.css">
-<div class="login-panel">
-    <div class="login-title">LOGIN</div>
-    <form name="addPlaceForm" ng-submit="login()">
-        <div class="default-inside-box">
-            <img src="images/admin/user_icon.png" class="email-icon">
-            <input type="text" class="login-input" value="" placeholder="Email" name="email" ng-model="loginForm.email" ng-trim="true" required ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
-        </div>
-        <div class="default-inside-box">
-            <img src="images/admin/key_icon.png" class="phone-icon">
-            <input type="password" class="login-input" value="" placeholder="Password" name="password" ng-model="loginForm.password" required>
-        </div>
-        <div class="form-buttons">
-            <input type="submit" name="login" value="Login" class="login-button">
-        </div>
-    </form>
+<div class="admin-page">
+    <header></header>
+    <div class="login-panel">
+        <div class="login-title">LOGIN</div>
+        <form name="addPlaceForm" ng-submit="login()">
+            <div class="default-inside-box">
+                <img src="images/admin/user_icon.png" class="email-icon">
+                <input type="text" class="login-input" value="" placeholder="Email" name="email" ng-model="loginForm.email" ng-trim="true" required ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
+            </div>
+            <div class="default-inside-box">
+                <img src="images/admin/key_icon.png" class="phone-icon">
+                <input type="password" class="login-input" value="" placeholder="Password" name="password" ng-model="loginForm.password" required>
+            </div>
+            <div class="form-buttons">
+                <input type="submit" name="login" value="Login" class="login-button">
+            </div>
+        </form>
+    </div>
 </div>

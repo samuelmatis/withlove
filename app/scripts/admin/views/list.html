@@ -1,58 +1,61 @@
-<div id="main-wrapper">
-    <div>
-        <div id="search-bar">
-            <input type="text" placeholder="Search places..." ng-model="nameFilter">
-        </div>
+<div class="admin-page">
+    <header></header>
+    <div id="main-wrapper">
+        <div>
+            <div id="search-bar">
+                <input type="text" placeholder="Search places..." ng-model="nameFilter">
+            </div>
 
-        <div ng-repeat="place in places | filter:nameFilter">
-            <div class="box">
+            <div ng-repeat="place in places | filter:nameFilter">
+                <div class="box">
 
-                <div class="top-line">
+                    <div class="top-line">
 
-                    <div class="name-box {{place.category.slug}}">
-                        <div class="inside-wrapper">
-                            {{ place.name | limitTo: 25 }}
+                        <div class="name-box {{place.category.slug}}">
+                            <div class="inside-wrapper">
+                                {{ place.name | limitTo: 25 }}
+                            </div>
                         </div>
+
+                        <div class="address-box">
+                            {{ place.street | limitTo: 30 }}, {{ place.town | limitTo: 30 }}
+                            <a href="#/edit/{{place.id}}" class="edit"><i class="glyphicon glyphicon-pencil"></i> </a>
+                        </div>
+
                     </div>
 
-                    <div class="address-box">
-                        {{ place.street | limitTo: 30 }}, {{ place.town | limitTo: 30 }}
-                        <a href="#/edit/{{place.id}}" class="edit"> </a>
+                    <div class="top-line">
+
+                        <div class="default-inside-box">
+                            <img src="images/admin/web_icon.png" class="web-icon">
+                            <a href="{{place.web}}" target="_blank">{{ place.web | limitTo: 25 }}</a>
+                        </div>
+
+                        <div class="default-inside-box undefined">
+                            <img src="images/admin/email_icon.png" class="email-icon">
+                            <a href="mailto:{{ place.email }}">{{ place.email | limitTo: 25 }}</a>
+                        </div>
+
+                        <div class="default-inside-box">
+                            <img src="images/admin/phone_icon.png" class="phone-icon">
+                            {{ place.phone }}
+                        </div>
+
+                    </div>
+
+                    <div class="content-box">
+
+                        <div class="text">
+                            {{ place.description | limitTo: 280 }}
+                        </div>
+
+                        <div class="item_number">
+                            {{ $index + 1 }} / {{ places.length }}
+                        </div>
+
                     </div>
 
                 </div>
-
-                <div class="top-line">
-
-                    <div class="default-inside-box">
-                        <img src="images/admin/web_icon.png" class="web-icon">
-                        <a href="{{place.web}}" target="_blank">{{ place.web | limitTo: 25 }}</a>
-                    </div>
-
-                    <div class="default-inside-box undefined">
-                        <img src="images/admin/email_icon.png" class="email-icon">
-                        <a href="mailto:{{ place.email }}">{{ place.email | limitTo: 25 }}</a>
-                    </div>
-
-                    <div class="default-inside-box">
-                        <img src="images/admin/phone_icon.png" class="phone-icon">
-                        {{ place.phone }}
-                    </div>
-
-                </div>
-
-                <div class="content-box">
-
-                    <div class="text">
-                        {{ place.description | limitTo: 280 }}
-                    </div>
-
-                    <div class="item_number">
-                        {{ $index + 1 }} / {{ places.length }}
-                    </div>
-
-                </div>
-
             </div>
         </div>
     </div>
