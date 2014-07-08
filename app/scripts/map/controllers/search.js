@@ -37,22 +37,10 @@ angular.module('withlove.map')
 
         $scope.editItem = function(current) {
             $scope.selectedCategory = current.category;
-            $scope.form.id = current.id;
-            $scope.form.name = current.name;
-            $scope.form.town = current.town;
-            $scope.form.street = current.street;
-            $scope.form.web = current.web;
-            $scope.form.email = current.email;
-            $scope.form.phone = current.phone;
-            $scope.form.description = current.description;
-            $scope.form.category = current.category.id;
 
-            console.log($scope.form);
+            _.extend($scope.form, current);
 
-            $scope.$watch('form', function(prevValue, newValue) {
-                console.log('prevValue', prevValue);
-                console.log('nextValue', newValue);
-            }, true);
+            // console.log('scope.form', $scope.form);
 
             $scope.editAction = true;
             $scope.addPlaceFormVisible = true;

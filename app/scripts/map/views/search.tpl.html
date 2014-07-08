@@ -21,7 +21,7 @@
         <form name="addPlaceForm" novalidate>
             <div>
                 <div class="addplaceform-datarow">
-                    <select-stairs name="category" stairs="categories" defaultoption="selectedCategory" ng-model="form.category" required></select-stairs>
+                    <select-stairs name="category" stairs="categories" defaultoption="selectedCategory" ng-model="form.categoryId" required></select-stairs>
                 </div>
 
                 <div class="addplaceform-datarow">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="addplaceform-datarow">
                     <span class="addplaceform-icon-wrapper"><img src="images/map/address.png" alt="Address" /></span>
-                    <input type="text" ng-pattern="/^\s*\w*\s*$/" required ng-trim="true" placeholder="Town..." autocomplete="off" name="companyTown" class="addplaceform-input" ng-model="form.town">
+                    <input type="text" required ng-trim="true" placeholder="Town..." autocomplete="off" name="companyTown" class="addplaceform-input" ng-model="form.town">
                     <span ng-show="addPlaceForm.companyTown.$valid" class="addplaceform-validation-wrapper"><img src="images/map/check-success.png" /></span>
                     <span ng-hide="addPlaceForm.companyTown.$valid" class="addplaceform-validation-wrapper"><img src="images/map/check-failed.png" /></span>
                 </div>

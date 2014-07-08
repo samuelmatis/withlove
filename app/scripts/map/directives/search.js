@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('withlove.map')
-    .directive('appSearch', function(placesService, $modal) {
+    .directive('appSearch', function(placesService, Restangular, $modal) {
         return {
             templateUrl: '/scripts/map/views/search.tpl.html',
             replace: true,
@@ -69,10 +69,21 @@ angular.module('withlove.map')
                     placesService.one(scope.form.id).get().then(function(place) {
                         scope.addPlaceFormDisable();
 
-                        _.extend(place, scope.form);
+                        var newPlace = Restangular.copy(place);
 
-                        var placePutPromise = place.put();
-                        placePutPromise.then(function() {
+                        newPlace.name = scope.form.name;
+                        newPlace.town = scope.form.town;
+                        newPlace.street = scope.form.street;
+                        newPlace.web = scope.form.web;
+                        newPlace.email = scope.form.email;
+                        newPlace.phone = scope.form.phone;
+                        newPlace.description = scope.form.description;
+                        newPlace.categoryId = parseInt(scope.form.categoryId, 10);
+
+                        console.log('scope.form', scope.form);
+                        console.log('place', newPlace);
+
+                        newPlace.put().then(function() {
                             $modal.open({
                                 templateUrl: 'scripts/map/views/successModalMessage.tpl.html',
                                 controller: 'ModalInstanceCtrl',
@@ -80,7 +91,6 @@ angular.module('withlove.map')
                                     data: function(){
                                         return { title: modalMessages.edit.title, text: modalMessages.add.success };
                                     }
-
                                 }
                             });
                             scope.clearFormAfterSave();
