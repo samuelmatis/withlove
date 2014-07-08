@@ -7,14 +7,14 @@ var mongoose = require('mongoose'),
  * Thing Schema
  */
 var CategorySchema = new Schema({
-    id: String,
+    id: Number,
     name: String,
-    canHasChildren: String,
+    canHasChildren: Number,
     color: String,
     iconNormal: String,
     iconPin: String,
     slug: String,
-    order: String,
+    order: Number,
     createdAt: { type: Date, default: Date.now },
     updatedAt: Date
 });

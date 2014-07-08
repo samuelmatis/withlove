@@ -20,7 +20,7 @@ exports.all = function(req, res) {
             var returnPlaces = [];
             places.forEach(function(place) {
                 place = JSON.parse(JSON.stringify(place));
-                place.category = _.where(categories, { 'id': place.categoryId })[0];
+                place.category = _.where(categories, { id: place.categoryId })[0];
 
                 returnPlaces.push(place);
             });
@@ -36,10 +36,10 @@ exports.all = function(req, res) {
 exports.one = function(req, res) {
     var placeId = req.params.id;
 
-    return Place.findOne({'id': placeId}, function(err, place) {
+    return Place.findOne({id: placeId}, function(err, place) {
         if (err) return res.send(err);
 
-        Category.findOne({'id': place.categoryId}, function(err, category) {
+        Category.findOne({id: place.categoryId}, function(err, category) {
             if (err) return res.send(err);
 
             place = JSON.parse(JSON.stringify(place));
@@ -77,7 +77,7 @@ exports.edit = function(req, res) {
     var newPlace = req.body;
     var placeId = req.params.id;
 
-    return Place.findOne({'id': placeId}, function(err, place) {
+    return Place.findOne({id: placeId}, function(err, place) {
         if (err) return res.send(err);
 
         _.extend(place, newPlace);
@@ -104,7 +104,7 @@ exports.edit = function(req, res) {
 exports.remove = function(req, res) {
     var placeId = req.params.id;
 
-    return Place.findOne({'id': placeId}, function(err, place) {
+    return Place.findOne({id: placeId}, function(err, place) {
         if (err) res.send(err);
 
         return place.remove(function(err) {

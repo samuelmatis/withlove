@@ -7,12 +7,12 @@ var mongoose = require('mongoose'),
  * Thing Schema
  */
 var PlaceSchema = new Schema({
-    id: String,
-    categoryId: String,
+    id: Number,
+    categoryId: Number,
     name: String,
     description: String,
-    latitude: String,
-    longitude: String,
+    latitude: Number,
+    longitude: Number,
     email: String,
     country: String,
     parent: String,
