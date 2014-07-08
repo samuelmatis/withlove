@@ -9,10 +9,10 @@ var mongoose = require('mongoose'),
 /**
  * Populate database with demo application data
  */
-var placesDataFile = require('../demo_data/places.json');
-var placeSuggestDataFile = require('../demo_data/placeSuggest.json');
-var categoriesDataFile = require('../demo_data/categories.json');
-var usersDataFile = require('../demo_data/users.json');
+var placesDataFile = require('./places.json');
+var placeSuggestDataFile = require('./placeSuggest.json');
+var categoriesDataFile = require('./categories.json');
+var usersDataFile = require('./users.json');
 
 var placesData = JSON.parse(JSON.stringify(placesDataFile));
 var placeSuggestData = JSON.parse(JSON.stringify(placeSuggestDataFile));
@@ -29,7 +29,7 @@ Place.find({}).remove(function() {
 PlaceSuggest.find({}).remove(function() {
     PlaceSuggest.create(placeSuggestData, function(err, result) {
         if (err) console.log('Cannot insert places demo data');
-        else console.log('Finished populating places');
+        else console.log('Finished populating suggested places');
     });
 });
 
