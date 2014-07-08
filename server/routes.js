@@ -31,30 +31,30 @@ module.exports = function(app) {
 
     // Suggest Places
     app.route('/api/placesuggest')
-        .get(suggestPlaces.all)
-        .post(suggestPlaces.create);
+        .get(middleware.auth, suggestPlaces.all)
+        .post(middleware.auth, suggestPlaces.create);
     app.route('/api/placesuggest/:id')
-        .get(suggestPlaces.one)
-        .put(suggestPlaces.edit)
-        .delete(suggestPlaces.remove);
+        .get(middleware.auth, suggestPlaces.one)
+        .put(middleware.auth, suggestPlaces.edit)
+        .delete(middleware.auth, suggestPlaces.remove);
 
     // Categories
     app.route('/api/categories')
         .get(categories.all)
-        .post(categories.create);
+        .post(middleware.auth, categories.create);
     app.route('/api/categories/:id')
         .get(categories.one)
-        .put(categories.edit)
-        .delete(categories.remove);
+        .put(middleware.auth, categories.edit)
+        .delete(middleware.auth, categories.remove);
 
     // Users
     app.route('/api/users')
-        .post(users.create)
-        .put(users.changePassword);
+        .post(middleware.auth, users.create)
+        .put(middleware.auth, users.changePassword);
     app.route('/api/users/me')
-        .get(users.me);
+        .get(middleware.auth, users.me);
     app.route('/api/users/:id')
-        .get(users.show);
+        .get(middleware.auth, users.show);
 
     // Session
     app.post('/login', session.login);
