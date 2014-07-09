@@ -62,16 +62,9 @@ angular.module('withlove.admin', [
 
     $rootScope.$on('$routeChangeStart', function(event, currentRoute) {
             $http.defaults.headers.common.Authorization = $cookieStore.get('user');
-            var pageAuthenticate;
-
-            if (typeof currentRoute.authenticate === 'undefined') {
-                pageAuthenticate = true;
-            } else {
-                pageAuthenticate = currentRoute.authenticate;
-            }
 
             authService.isAuthenticated().then(function() {}, function() {
-                if (pageAuthenticate) {
+                if (currentRoute.authenticate) {
                     $location.path('/login');
                 }
             });
