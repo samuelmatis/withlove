@@ -121,7 +121,7 @@ exports.remove = function(req, res) {
  * Download data
  */
 exports.download = function(req, res) {
-    return Place.find().sort(id).exec(function(err, places) {
+    return Place.find().sort('id').exec(function(err, places) {
         return json2csv({data: places, fields: [
             'id', 'categoryId', 'name',
             'description', 'latitude',
