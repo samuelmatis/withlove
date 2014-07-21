@@ -8,7 +8,11 @@ angular.module('withlove.shared', [
 ])
 
 .run(function($rootScope, $location) {
+
     $rootScope.is = function(route) {
-        return $location.path() === '/' + route;
+        if (route === '') return $location.path() === '';
+        var routeRegExp = new RegExp(route, 'g');
+        return routeRegExp.test($location.path());
     };
+
 });
