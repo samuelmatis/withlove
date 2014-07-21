@@ -8,7 +8,7 @@ nav {
     margin: 0 auto;
     border: 10px solid #232326;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 nav ul {
@@ -75,6 +75,23 @@ nav li .review.active {
     border-bottom: 5px solid #edce33;
 }
 
+.second-nav {
+    border: 0px !important;
+    margin-top: 0px !important;
+}
+
+.second-nav li .download-data {
+    margin-left: 300px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background: #3887BE;
+    border-bottom: 5px solid #0061A5;
+}
+
+.second-nav li .download-data.active {
+    border-bottom: 5px solid #3887BE;
+}
+
 nav:after {
     content: '';
     display: block;
@@ -100,7 +117,7 @@ nav:after {
     border: 0;
     margin-left: 20px;
     padding-left: 30px;
-    background: url(../images/search_logo.png);
+    background: url(../../images/admin/search_logo.png);
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: left center;
@@ -167,7 +184,7 @@ nav:after {
     float: right;
     background: red;
     width: 61%;
-    background: url(../images/address_icon.png);
+    background: url(../../images/admin/address_icon.png);
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 30px;
@@ -220,7 +237,7 @@ nav:after {
 }
 
 .box .top-line .address-box .map.active,.edit-box .top-line .address-box .map.active {
-    background: url(../images/map_icon_active.png);
+    background: url(../../images/admin/map_icon_active.png);
     background-repeat: no-repeat;
     background-position: center;
     background-color: #575757;
@@ -265,7 +282,7 @@ nav:after {
 }
 
 .box .content-box,.edit-box .content-box {
-    background: url(../images/text_icon.png);
+    background: url(../../images/admin/text_icon.png);
     background-repeat: no-repeat;
     padding-left: 34px;
     margin-left: 17px;
